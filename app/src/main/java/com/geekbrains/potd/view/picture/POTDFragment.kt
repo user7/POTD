@@ -3,14 +3,15 @@ package com.geekbrains.potd.view.picture
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import coil.load
+import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentMainBinding
+import com.geekbrains.potd.view.MainActivity
 import com.geekbrains.potd.viewmodel.POTDState
 import com.geekbrains.potd.viewmodel.POTDViewModel
 
@@ -36,6 +37,7 @@ class POTDFragment : Fragment() {
                 Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             })
         }
+        setBottomAppBar()
     }
 
     private fun renderData(state: POTDState) {
@@ -60,5 +62,24 @@ class POTDFragment : Fragment() {
 
     companion object {
         fun newInstance() = POTDFragment()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_bottom_bar, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_settings -> Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setBottomAppBar() {
+        val context = activity as MainActivity
+        context.setSupportActionBar(binding.bottomAppBar)
+        setHasOptionsMenu(true)
     }
 }

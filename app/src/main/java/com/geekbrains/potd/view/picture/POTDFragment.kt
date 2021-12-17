@@ -76,7 +76,13 @@ class POTDFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
-            R.id.app_bar_settings -> Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
+            R.id.app_bar_settings -> {
+                requireActivity().supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.container, ChipsFragment.newInstance())
+                    .addToBackStack("")
+                    .commit()
+            }
             android.R.id.home -> BottomNavFragment().show(requireActivity().supportFragmentManager,
                 "")
             else -> return super.onOptionsItemSelected(item)

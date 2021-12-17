@@ -24,4 +24,8 @@ class POTDFragment : Fragment() {
         _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
+
+    companion object {
+        fun newInstance() = POTDFragment()
+    }
 }

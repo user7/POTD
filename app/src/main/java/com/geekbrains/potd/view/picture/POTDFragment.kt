@@ -73,8 +73,10 @@ class POTDFragment : Fragment() {
         when (item.itemId) {
             R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
             R.id.app_bar_settings -> Toast.makeText(context, "Settings", Toast.LENGTH_SHORT).show()
+            android.R.id.home -> BottomNavFragment().show(requireActivity().supportFragmentManager, "")
+            else -> return super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
+        return true
     }
 
     private fun setBottomAppBar() {

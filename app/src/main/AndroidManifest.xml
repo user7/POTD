@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.POTD">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:exported="true">
 
             <intent-filter>

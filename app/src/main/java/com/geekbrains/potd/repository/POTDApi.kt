@@ -6,5 +6,8 @@ import retrofit2.http.Query
 
 interface POTDApi {
     @GET("planetary/apod")
-    fun getPOTD(@Query("api_key") apiKey:String) : Call<POTDResponse>
+    fun getPOTD(
+        @Query("api_key") apiKey: String,
+        @Query("date") date: String,
+    ) : Call<POTDResponse>
 }

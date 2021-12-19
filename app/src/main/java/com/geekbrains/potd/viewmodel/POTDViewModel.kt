@@ -1,5 +1,6 @@
 package com.geekbrains.potd.viewmodel
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -9,6 +10,8 @@ import com.geekbrains.potd.repository.POTDRetrofitImpl
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class POTDViewModel(
     private val stateLiveData: MutableLiveData<POTDState> = MutableLiveData(),
@@ -18,10 +21,20 @@ class POTDViewModel(
         return stateLiveData
     }
 
+    private var dayShift = 0
+    fun setDayShift(dayShift_: Int) {
+        dayShift = dayShift_
+        sendServerRequest()
+    }
+
     fun sendServerRequest() {
         stateLiveData.value = POTDState.Loading(0)
         val apiKey: String = BuildConfig.NASA_API_KEY
-        retrofitImpl.get().getPOTD(apiKey).enqueue(callback)
+        val cal = Calendar.getInstance().apply { add(Calendar.DAY_OF_MONTH, dayShift) }
+        val date = SimpleDateFormat("yyyy-MM-dd" , Locale.getDefault())
+            .apply { timeZone = TimeZone.getTimeZone("EST") }
+            .format(cal.time)
+        retrofitImpl.get().getPOTD(apiKey, date).enqueue(callback)
     }
 
     val callback = object : Callback<POTDResponse> {
@@ -30,12 +43,12 @@ class POTDViewModel(
             if (response.isSuccessful && body != null) {
                 stateLiveData.value = POTDState.Success(body)
             } else {
-                TODO("handle http error")
+                Log.d("==", "bad response ${response}")
             }
         }
 
         override fun onFailure(call: Call<POTDResponse>, t: Throwable) {
-            TODO("Not yet implemented")
+            Log.d("==", "request failed $t")
         }
     }
 }

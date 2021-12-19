@@ -51,6 +51,7 @@ class POTDFragment : Fragment() {
             is POTDState.Success -> {
                 val url = state.potdResponse.url
                 binding.imageView.load(url) {}
+                binding.imageDescription.setText(state.potdResponse.title)
             }
         }
     }

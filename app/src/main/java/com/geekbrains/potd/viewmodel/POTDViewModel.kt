@@ -34,7 +34,7 @@ class POTDViewModel(
         cal.add(Calendar.DAY_OF_MONTH, dayShift)
         val fmt = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
         fmt.timeZone = TimeZone.getTimeZone("EST")
-        retrofitImpl.get().getPOTD(apiKey, fmt.format(cal.time)).enqueue(callback)
+        retrofitImpl.api.getPOTD(apiKey, fmt.format(cal.time)).enqueue(callback)
     }
 
     val callback = object : Callback<POTDResponse> {

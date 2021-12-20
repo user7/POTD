@@ -30,11 +30,11 @@ class POTDViewModel(
     fun sendServerRequest() {
         stateLiveData.value = POTDState.Loading(0)
         val apiKey: String = BuildConfig.NASA_API_KEY
-        val cal = Calendar.getInstance().apply { add(Calendar.DAY_OF_MONTH, dayShift) }
-        val date = SimpleDateFormat("yyyy-MM-dd" , Locale.getDefault())
-            .apply { timeZone = TimeZone.getTimeZone("EST") }
-            .format(cal.time)
-        retrofitImpl.get().getPOTD(apiKey, date).enqueue(callback)
+        val cal = Calendar.getInstance()
+        cal.add(Calendar.DAY_OF_MONTH, dayShift)
+        val fmt = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+        fmt.timeZone = TimeZone.getTimeZone("EST")
+        retrofitImpl.get().getPOTD(apiKey, fmt.format(cal.time)).enqueue(callback)
     }
 
     val callback = object : Callback<POTDResponse> {

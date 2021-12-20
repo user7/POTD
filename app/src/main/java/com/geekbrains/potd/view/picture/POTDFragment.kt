@@ -39,6 +39,9 @@ class POTDFragment : Fragment() {
                 Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             })
         }
+        binding.chipToday.setOnClickListener { viewModel.setDayShift(0) }
+        binding.chipYesterday.setOnClickListener { viewModel.setDayShift(-1) }
+        binding.chipYesterday2.setOnClickListener { viewModel.setDayShift(-2) }
         setBottomAppBar()
     }
 
@@ -51,6 +54,7 @@ class POTDFragment : Fragment() {
             is POTDState.Success -> {
                 val url = state.potdResponse.url
                 binding.imageView.load(url) {}
+                binding.imageDescription.setText(state.potdResponse.title)
             }
         }
     }

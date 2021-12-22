@@ -9,6 +9,10 @@
         <item name="android:fontFamily">@font/chintzy</item>
     </style>
 
+    <style name="ChipBase" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipCornerRadius">10dp</item>
+    </style>
+
     <style name="Theme.Steel" parent="Theme.Base">
         <item name="colorPrimary">@color/steelPrimaryColor</item>
         <item name="colorPrimaryVariant">@color/steelPrimaryDarkColor</item>
@@ -21,9 +25,8 @@
         <item name="chipStyle">@style/SteelChip</item>
     </style>
 
-    <style name="SteelChip" parent="Widget.MaterialComponents.Chip.Filter">
+    <style name="SteelChip" parent="ChipBase">
         <item name="chipBackgroundColor">@color/steelPrimaryDarkColor</item>
-        <item name="chipCornerRadius">10dp</item>
     </style>
 
     <style name="Theme.Copper" parent="Theme.Base">
@@ -38,9 +41,8 @@
         <item name="chipStyle">@style/CopperChip</item>
     </style>
 
-    <style name="CopperChip" parent="Widget.MaterialComponents.Chip.Filter">
+    <style name="CopperChip" parent="ChipBase">
         <item name="chipBackgroundColor">@color/copperPrimaryColor</item>
-        <item name="chipCornerRadius">10dp</item>
     </style>
 
     <style name="Theme.Default" parent="Theme.Steel"/>

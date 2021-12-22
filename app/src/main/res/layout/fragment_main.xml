@@ -113,7 +113,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="?colorAccent"
         app:layout_anchor="@id/bottom_app_bar"
-        app:srcCompat="@drawable/ic_plus_fab"
+        app:srcCompat="@drawable/ic_info"
         app:tint="#FFFFFF" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

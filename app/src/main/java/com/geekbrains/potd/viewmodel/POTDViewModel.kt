@@ -15,7 +15,7 @@ import java.util.*
 
 class POTDViewModel(
     private val stateLiveData: MutableLiveData<POTDState> = MutableLiveData(),
-    private val retrofitImpl: POTDRetrofitImpl = POTDRetrofitImpl()
+    private val retrofitImpl: POTDRetrofitImpl = POTDRetrofitImpl(),
 ) : ViewModel() {
     fun getData(): LiveData<POTDState> {
         return stateLiveData
@@ -51,4 +51,6 @@ class POTDViewModel(
             Log.d("==", "request failed $t")
         }
     }
+
+    var themeId: Int? = null
 }

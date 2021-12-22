@@ -1,15 +1,18 @@
 package com.geekbrains.potd.view.picture
 
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.*
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import coil.load
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentMainBinding
+import com.geekbrains.potd.view.ChangeThemeCallback
 import com.geekbrains.potd.view.MainActivity
 import com.geekbrains.potd.viewmodel.POTDState
 import com.geekbrains.potd.viewmodel.POTDViewModel
@@ -19,9 +22,7 @@ class POTDFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     val binding: FragmentMainBinding get() = _binding!!
 
-    private val viewModel: POTDViewModel by lazy {
-        ViewModelProvider(this).get(POTDViewModel::class.java)
-    }
+    val viewModel: POTDViewModel by activityViewModels()
 
     override fun onDestroy() {
         super.onDestroy()
@@ -68,6 +69,12 @@ class POTDFragment : Fragment() {
         return binding.root
     }
 
+    private lateinit var changeThemeCallback: ChangeThemeCallback
+    override fun onAttach(context: Context) {
+        changeThemeCallback = context as ChangeThemeCallback
+        super.onAttach(context)
+    }
+
     companion object {
         fun newInstance() = POTDFragment()
     }
@@ -79,7 +86,8 @@ class POTDFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> Toast.makeText(context, "Favourite", Toast.LENGTH_SHORT).show()
+            R.id.theme_steel -> changeThemeCallback.onChangeTheme(R.style.Theme_Steel)
+            R.id.theme_copper -> changeThemeCallback.onChangeTheme(R.style.Theme_Copper)
             R.id.app_bar_settings -> {
                 requireActivity().supportFragmentManager
                     .beginTransaction()

@@ -9,4 +9,23 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="color_gray">#66000000</color>
+
+    <color name="steelPrimaryColor">#71797C</color>
+    <color name="steelPrimaryLightColor">#ffffff</color>
+    <color name="steelPrimaryDarkColor">#9ea7aa</color>
+    <color name="steelSecondaryColor">#50575A</color>
+    <color name="steelSecondaryLightColor">#c1d5e0</color>
+    <color name="steelSecondaryDarkColor">#62757f</color>
+    <color name="steelPrimaryTextColor">#37474f</color>
+    <color name="steelSecondaryTextColor">#eceff1</color>
+
+    <color name="copperPrimaryColor">#C2A690</color>
+    <color name="copperPrimaryLightColor">#ffffe4</color>
+    <color name="copperPrimaryDarkColor">#cbae82</color>
+    <color name="copperSecondaryColor">#8E7867</color>
+    <color name="copperSecondaryLightColor">#ffe97d</color>
+    <color name="copperSecondaryDarkColor">#c88719</color>
+    <color name="copperPrimaryTextColor">#6d4c41</color>
+    <color name="copperSecondaryTextColor">#3e2723</color>
+
 </resources>

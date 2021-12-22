@@ -49,21 +49,18 @@
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipYesterday2"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chipLabelYesterday2" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipYesterday"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/chipLabelYesterday" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chipToday"
-                style="@style/Widget.MaterialComponents.Chip.Choice"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checked="true"
@@ -96,7 +93,7 @@
 
     <include
         android:id="@+id/includeBottomSheet"
-        layout="@layout/bottom_sheet_layout"/>
+        layout="@layout/bottom_sheet_layout" />
 
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottom_app_bar"
@@ -105,7 +102,7 @@
         android:layout_gravity="bottom"
         app:backgroundTint="?colorPrimary"
         app:fabAlignmentMode="center"
-        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar"/>
+        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"

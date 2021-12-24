@@ -11,7 +11,7 @@
         <item name="textAppearanceLabelLarge">@style/StyleLabel</item>
         <item name="textAppearanceSubtitle1">@style/StyleText</item>
         <item name="shapeAppearanceSmallComponent">@style/StyleShapeSmallComponent</item>
-        <item name="mainFont">@font/montserrat_extra_bold</item>
+        <item name="mainFont">@font/montserrat_medium</item>
     </style>
 
     <style name="StyleLabel" parent="TextAppearance.Material3.LabelLarge">

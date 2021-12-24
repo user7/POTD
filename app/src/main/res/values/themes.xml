@@ -6,19 +6,42 @@
 
     <style name="Theme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:textViewStyle">@style/TextViewFont</item>
+        <item name="chipStyle">@style/ChipStyle</item>
+        <item name="textAppearanceLabelLarge">@style/StyleLabel</item>
+        <item name="textAppearanceSubtitle1">@style/StyleText</item>
+        <item name="shapeAppearanceSmallComponent">@style/StyleShapeSmallComponent</item>
+    </style>
+
+    <style name="StyleLabel" parent="TextAppearance.Material3.LabelLarge">
+        <item name="fontFamily">@font/montserrat_extra_bold</item>
+        <item name="android:fontFamily">@font/montserrat_extra_bold</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="StyleText" parent="TextAppearance.Material3.BodyLarge">
+        <item name="fontFamily">@font/montserrat_extra_bold</item>
+        <item name="android:fontFamily">@font/montserrat_extra_bold</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="StyleShapeSmallComponent">
+        <item name="chipCornerRadius">3dp</item>
     </style>
 
     <style name="TextViewFont" parent="android:Widget.TextView">
         <item name="android:fontFamily">@font/montserrat_extra_bold</item>
     </style>
 
-    <style name="ChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
-        <item name="chipCornerRadius">10dp</item>
-        <item name="chipBackgroundColor">@color/chip_bg_selector</item>
-        <item name="chipStrokeColor">?attr/colorOnPrimary</item>
+    <style name="ChipStyle" parent="Widget.Material3.Chip.Suggestion">
+        <item name="chipStrokeColor">@color/chip_stroke</item>
+        <item name="chipBackgroundColor">@color/chip_bg</item>
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="Theme.Steel" parent="Theme.Base">
+        <item name="colorOnSurface">@color/steelPrimaryColor</item>
+
         <item name="colorPrimary">@color/steelPrimaryColor</item>
         <item name="colorPrimaryVariant">@color/steelPrimaryDarkColor</item>
         <item name="colorOnPrimary">@color/steelPrimaryTextColor</item>
@@ -27,10 +50,11 @@
         <item name="colorSecondaryVariant">@color/steelSecondaryDarkColor</item>
         <item name="colorOnSecondary">@color/steelSecondaryTextColor</item>
 
-        <item name="chipStyle">@style/ChipStyle</item>
     </style>
 
     <style name="Theme.Copper" parent="Theme.Base">
+        <item name="colorOnSurface">@color/copperPrimaryColor</item>
+
         <item name="colorPrimary">@color/copperPrimaryColor</item>
         <item name="colorPrimaryVariant">@color/copperPrimaryDarkColor</item>
         <item name="colorOnPrimary">@color/copperPrimaryTextColor</item>

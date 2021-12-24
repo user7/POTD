@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
 
-    <style name="Theme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+    <style name="Theme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:textViewStyle">@style/TextViewFont</item>
     </style>
 

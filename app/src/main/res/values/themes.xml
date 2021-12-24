@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
+    <attr name="mainFont" format="string" />
 
     <style name="Theme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:textViewStyle">@style/TextViewFont</item>
@@ -10,17 +11,18 @@
         <item name="textAppearanceLabelLarge">@style/StyleLabel</item>
         <item name="textAppearanceSubtitle1">@style/StyleText</item>
         <item name="shapeAppearanceSmallComponent">@style/StyleShapeSmallComponent</item>
+        <item name="mainFont">@font/montserrat_extra_bold</item>
     </style>
 
     <style name="StyleLabel" parent="TextAppearance.Material3.LabelLarge">
-        <item name="fontFamily">@font/montserrat_extra_bold</item>
-        <item name="android:fontFamily">@font/montserrat_extra_bold</item>
+        <item name="fontFamily">?attr/mainFont</item>
+        <item name="android:fontFamily">?attr/mainFont</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="StyleText" parent="TextAppearance.Material3.BodyLarge">
-        <item name="fontFamily">@font/montserrat_extra_bold</item>
-        <item name="android:fontFamily">@font/montserrat_extra_bold</item>
+        <item name="fontFamily">?attr/mainFont</item>
+        <item name="android:fontFamily">?attr/mainFont</item>
         <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
@@ -29,7 +31,7 @@
     </style>
 
     <style name="TextViewFont" parent="android:Widget.TextView">
-        <item name="android:fontFamily">@font/montserrat_extra_bold</item>
+        <item name="android:fontFamily">?attr/mainFont</item>
     </style>
 
     <style name="ChipStyle" parent="Widget.Material3.Chip.Suggestion">

@@ -1,4 +1,7 @@
-<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
+<resources
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
 
     <style name="Theme.Base" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -9,8 +12,10 @@
         <item name="android:fontFamily">@font/chintzy</item>
     </style>
 
-    <style name="ChipBase" parent="Widget.MaterialComponents.Chip.Filter">
+    <style name="ChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="chipCornerRadius">10dp</item>
+        <item name="chipBackgroundColor">@color/chip_bg_selector</item>
+        <item name="chipStrokeColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="Theme.Steel" parent="Theme.Base">
@@ -22,11 +27,7 @@
         <item name="colorSecondaryVariant">@color/steelSecondaryDarkColor</item>
         <item name="colorOnSecondary">@color/steelSecondaryTextColor</item>
 
-        <item name="chipStyle">@style/SteelChip</item>
-    </style>
-
-    <style name="SteelChip" parent="ChipBase">
-        <item name="chipBackgroundColor">@color/steelPrimaryDarkColor</item>
+        <item name="chipStyle">@style/ChipStyle</item>
     </style>
 
     <style name="Theme.Copper" parent="Theme.Base">
@@ -38,11 +39,7 @@
         <item name="colorSecondaryVariant">@color/copperSecondaryDarkColor</item>
         <item name="colorOnSecondary">@color/copperSecondaryTextColor</item>
 
-        <item name="chipStyle">@style/CopperChip</item>
-    </style>
-
-    <style name="CopperChip" parent="ChipBase">
-        <item name="chipBackgroundColor">@color/copperPrimaryColor</item>
+        <item name="chipStyle">@style/ChipStyle</item>
     </style>
 
     <style name="Theme.Default" parent="Theme.Steel"/>

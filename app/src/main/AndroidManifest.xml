@@ -14,7 +14,11 @@
         <activity
             android:name=".view.MainActivity"
             android:exported="true">
+        </activity>
 
+        <activity
+            android:name=".view.api.ApiActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

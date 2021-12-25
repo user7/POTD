@@ -31,4 +31,7 @@
     <color name="copperPrimaryTextColor">#6d4c41</color>
     <color name="copperSecondaryTextColor">#3e2723</color>
 
+    <color name="colorAccent">#FFD81860</color>
+    <color name="colorAccent40Alpha">#66D81860</color>
+
 </resources>

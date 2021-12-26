@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import com.geekbrains.potd.R
 import com.geekbrains.potd.view.picture.POTDFragment
 import com.geekbrains.potd.viewmodel.POTDViewModel
@@ -13,6 +14,7 @@ class MainActivity : AppCompatActivity(), ChangeThemeCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         setTheme(viewModel.themeId ?: R.style.Theme_Steel)
         setContentView(R.layout.activity_main)
         if (savedInstanceState == null) {

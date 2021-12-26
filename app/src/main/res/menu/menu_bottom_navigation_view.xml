@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/bottom_view_system"
+        android:icon="@drawable/ic_tabitem_system"
+        android:title="@string/label_tabitem_system" />
+
+    <item
+        android:id="@+id/bottom_view_earth"
+        android:icon="@drawable/ic_tabitem_earth"
+        android:title="@string/label_tabitem_earth" />
+
+    <item
+        android:id="@+id/bottom_view_mars"
+        android:icon="@drawable/ic_tabitem_mars"
+        android:title="@string/label_tabitem_mars" />
+
+</menu>

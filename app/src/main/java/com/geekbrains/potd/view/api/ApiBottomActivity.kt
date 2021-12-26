@@ -1,4 +1,30 @@
 package com.geekbrains.potd.view.api
 
-class ApiBottomActivity {
+import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.fragment.app.Fragment
+import com.geekbrains.potd.R
+import com.geekbrains.potd.databinding.ActivityApiBinding
+import com.geekbrains.potd.databinding.ActivityApiBottomBinding
+
+class ApiBottomActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityApiBottomBinding
+    private val navFragments = mapOf(
+        Pair(R.id.bottom_view_system, SystemFragment()),
+        Pair(R.id.bottom_view_earth, EarthFragment()),
+        Pair(R.id.bottom_view_mars, MarsFragment()),
+    )
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = ActivityApiBottomBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        binding.bottomNavigationView.setOnItemSelectedListener {
+            navFragments[it.itemId]?.let { fragment ->
+                supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
+                true
+            } ?: false
+        }
+        binding.bottomNavigationView.selectedItemId = R.id.bottom_view_system
+    }
 }

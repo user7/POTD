@@ -14,6 +14,14 @@
         <item name="mainFont">@font/montserrat_medium</item>
     </style>
 
+    <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="colorSurface">@color/colorAccent</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorPrimarySurface">@color/red</item>
+        <item name="colorOnPrimarySurface">@color/green</item>
+    </style>
+
     <style name="StyleLabel" parent="TextAppearance.Material3.LabelLarge">
         <item name="fontFamily">?attr/mainFont</item>
         <item name="android:fontFamily">?attr/mainFont</item>

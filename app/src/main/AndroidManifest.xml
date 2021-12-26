@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_logo3_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.POTD">
+        android:theme="@style/Theme.Default">
         <activity
             android:name=".view.MainActivity"
             android:exported="true">

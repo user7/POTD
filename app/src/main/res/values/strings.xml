@@ -4,11 +4,13 @@
     <string name="potd_stub">Photo of the day</string>
     <string name="search_wiki">Найти в Википедии</string>
     <string name="wiki_helper_text">Поищите термин в википедии</string>
-    <string name="favourite">favourite</string>
+    <string name="theme">Switch theme</string>
     <string name="settings">settings</string>
     <string name="search">Search</string>
     <string name="chipLabelYesterday2">Two days back</string>
     <string name="chipLabelYesterday">Yesterday</string>
     <string name="chipLabelToday">Today</string>
+    <string name="theme_steel_desc">Steely Colors</string>
+    <string name="theme_copper_desc">Copper Colors</string>
 
 </resources>

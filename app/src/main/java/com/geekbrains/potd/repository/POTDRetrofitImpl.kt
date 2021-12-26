@@ -6,11 +6,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class POTDRetrofitImpl {
     private val baseUrl = "https://api.nasa.gov/"
-    fun get(): POTDApi {
+    val api: POTDApi by lazy {
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
-        return retrofit.create(POTDApi::class.java)
+        retrofit.create(POTDApi::class.java)
     }
 }

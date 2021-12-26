@@ -5,13 +5,33 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.geekbrains.potd.R
 
-class ViewPagerAdapter(private val fm : FragmentManager) : FragmentStatePagerAdapter(fm) {
-    class FragmentInfo(val fragment: Fragment, val title: String, val iconId: Int)
+class ViewPagerAdapter(private val fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
+    class FragmentInfo(
+        val fragment: Fragment,
+        val title: String,
+        val iconId: Int,
+        val layoutId: Int,
+    )
 
     private val info = arrayOf(
-        FragmentInfo(SystemFragment(), "System", R.drawable.bg_system),
-        FragmentInfo(EarthFragment(), "Earth", R.drawable.bg_earth),
-        FragmentInfo(MarsFragment(), "Mars", R.drawable.bg_mars),
+        FragmentInfo(
+            SystemFragment(),
+            "System",
+            R.drawable.ic_tabitem_system,
+            R.layout.activity_api_tabitem_system
+        ),
+        FragmentInfo(
+            EarthFragment(),
+            "Earth",
+            R.drawable.ic_tabitem_earth,
+            R.layout.activity_api_tabitem_earth
+        ),
+        FragmentInfo(
+            MarsFragment(),
+            "Mars",
+            R.drawable.ic_tabitem_mars,
+            R.layout.activity_api_tabitem_mars
+        ),
     )
 
     override fun getCount(): Int = info.size
@@ -20,5 +40,9 @@ class ViewPagerAdapter(private val fm : FragmentManager) : FragmentStatePagerAda
 
     override fun getPageTitle(position: Int): CharSequence = info[position].title
 
-    fun getIconId(position: Int): Int = info[position].iconId
+    private fun at(pos: Int): FragmentInfo? = if (0 <= pos && pos < info.size) info[pos] else null
+
+    fun getIconId(position: Int): Int? = at(position)?.iconId
+
+    fun getLayoutId(position: Int): Int? = at(position)?.layoutId
 }

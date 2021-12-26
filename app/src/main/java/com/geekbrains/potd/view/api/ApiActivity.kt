@@ -15,7 +15,9 @@ class ApiActivity : AppCompatActivity() {
         binding.viewPager.adapter = adapter
         binding.tabLayout.setupWithViewPager(binding.viewPager)
         for (i: Int in 0 until adapter.count) {
-            binding.tabLayout.getTabAt(i)?.setIcon(adapter.getIconId(i))
+            adapter.getLayoutId(i)?.let {
+                binding.tabLayout.getTabAt(i)?.customView = layoutInflater.inflate(it, null)
+            }
         }
     }
 }

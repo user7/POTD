@@ -12,5 +12,8 @@
     <string name="chipLabelToday">Today</string>
     <string name="theme_steel_desc">Steely Colors</string>
     <string name="theme_copper_desc">Copper Colors</string>
+    <string name="label_tabitem_mars">Mars</string>
+    <string name="label_tabitem_earth">Earth</string>
+    <string name="label_tabitem_system">System</string>
 
 </resources>

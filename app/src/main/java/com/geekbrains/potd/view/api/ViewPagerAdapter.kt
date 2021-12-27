@@ -4,6 +4,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.geekbrains.potd.R
+import com.geekbrains.potd.view.api.earth.EarthFragment
+import com.geekbrains.potd.view.api.mars.MarsFragment
+import com.geekbrains.potd.view.api.system.SystemFragment
 
 class ViewPagerAdapter(private val fm: FragmentManager) : FragmentStatePagerAdapter(fm) {
     class FragmentInfo(

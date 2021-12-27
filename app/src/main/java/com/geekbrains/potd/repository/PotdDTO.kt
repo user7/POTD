@@ -2,7 +2,7 @@ package com.geekbrains.potd.repository
 
 import com.google.gson.annotations.SerializedName
 
-data class POTDResponse (
+data class PotdDTO (
     @field:SerializedName("copyright") val copyright: String?,
     @field:SerializedName("date") val date: String?,
     @field:SerializedName("explanation") val explanation: String?,

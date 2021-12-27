@@ -1,4 +1,4 @@
-package com.geekbrains.potd.view.api
+package com.geekbrains.potd.view.api.system
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,7 +14,7 @@ class SystemFragment : Fragment() {
     private var _binding: FragmentSystemBinding? = null
     val binding: FragmentSystemBinding get() = _binding!!
 
-    val fragmentViewModel: POTDFragmentViewModel by viewModels()
+    val fragmentViewModel: SystemViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -34,23 +34,23 @@ class SystemFragment : Fragment() {
         fragmentViewModel.state.observe(viewLifecycleOwner) { renderState(it) }
         binding.chipNextDay.setOnClickListener { fragmentViewModel.adjustDayShift(1) }
         binding.chipPrevDay.setOnClickListener { fragmentViewModel.adjustDayShift(-1) }
-        binding.chipResetDate.setOnClickListener { fragmentViewModel.adjustDayShift(0, true) }
+        binding.chipResetDate.setOnClickListener { fragmentViewModel.resetDayShift() }
         binding.chipHD.setOnClickListener { fragmentViewModel.adjustDayShift(0) }
         fragmentViewModel.sendServerRequest()
         super.onViewCreated(view, savedInstanceState)
     }
 
-    private fun renderState(state: POTDFragmentViewModel.RequestState) {
+    private fun renderState(state: SystemViewModel.RequestState) {
         when (state) {
-            is POTDFragmentViewModel.RequestState.Error -> {
+            is SystemViewModel.RequestState.Error -> {
                 binding.imageView.setImageResource(R.drawable.ic_load_error_vector)
                 binding.description.setText(state.error)
             }
-            is POTDFragmentViewModel.RequestState.Loading -> {
+            is SystemViewModel.RequestState.Loading -> {
                 binding.imageView.setImageResource(R.drawable.bg_system)
                 binding.description.setText(R.string.label_description_loading)
             }
-            is POTDFragmentViewModel.RequestState.Success -> {
+            is SystemViewModel.RequestState.Success -> {
                 val url = if (binding.chipHD.isChecked) state.response.hdurl else state.response.url
                 binding.imageView.load(url) {}
                 binding.description.setText(state.response.title)

@@ -4,6 +4,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.ActivityApiBottomBinding
+import com.geekbrains.potd.view.api.earth.EarthFragment
+import com.geekbrains.potd.view.api.mars.MarsFragment
+import com.geekbrains.potd.view.api.system.SystemFragment
 
 class ApiBottomActivity : AppCompatActivity() {
     private lateinit var binding: ActivityApiBottomBinding

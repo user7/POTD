@@ -2,9 +2,7 @@ package com.geekbrains.potd.view.api
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import com.geekbrains.potd.R
-import com.geekbrains.potd.databinding.ActivityApiBinding
 import com.geekbrains.potd.databinding.ActivityApiBottomBinding
 
 class ApiBottomActivity : AppCompatActivity() {

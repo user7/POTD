@@ -95,8 +95,10 @@ class POTDFragment : Fragment() {
                     .addToBackStack("")
                     .commit()
             }
-            android.R.id.home -> BottomNavFragment().show(requireActivity().supportFragmentManager,
-                "")
+            android.R.id.home -> BottomNavFragment().show(
+                requireActivity().supportFragmentManager,
+                ""
+            )
             else -> return super.onOptionsItemSelected(item)
         }
         return true

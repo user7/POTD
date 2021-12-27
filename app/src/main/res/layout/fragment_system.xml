@@ -4,23 +4,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:id="@+id/imageViewBackground"
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/indicatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipPrevDay"
+            style="@style/StyleChipButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_chip_previous"
+            app:chipIcon="@drawable/ic_baseline_navigate_prev_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipNextDay"
+            style="@style/StyleChipButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_chip_next"
+            app:chipIcon="@drawable/ic_baseline_navigate_next_24" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipResetDate"
+            style="@style/StyleChipButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_chip_today" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipHD"
+            style="@style/StyleChipFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/label_chip_hd" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <com.geekbrains.potd.utils.CustomImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/label_image_desc"
+        android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chipGroup"
+        app:layout_constraintVertical_chainStyle="packed"
         app:srcCompat="@drawable/bg_system" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:text="@string/label_description_loading"
+        app:layout_constraintBottom_toTopOf="@id/indicatorLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <LinearLayout
         android:id="@+id/indicatorLayout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="100dp"
+        android:layout_marginBottom="45dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,27 +84,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
             android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
             android:src="@drawable/ic_indicator_on" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
             android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
             android:src="@drawable/ic_indicator_off" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
             android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
             android:src="@drawable/ic_indicator_off" />
     </LinearLayout>
 

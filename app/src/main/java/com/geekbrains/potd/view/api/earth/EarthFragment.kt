@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.PagerSnapHelper
 import coil.load
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentEarthBinding
@@ -25,6 +26,7 @@ class EarthFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentEarthBinding.inflate(inflater, container, false)
+        PagerSnapHelper().attachToRecyclerView(binding.recyclerView)
         return binding.root
     }
 

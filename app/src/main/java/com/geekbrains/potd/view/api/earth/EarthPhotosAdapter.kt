@@ -8,21 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.geekbrains.potd.R
+import com.geekbrains.potd.databinding.PhotoRecyclerItemBinding
 import com.geekbrains.potd.repository.EpicPhotosDTO
 
 class EarthPhotosAdapter(private val photos: EpicPhotosDTO) :
     RecyclerView.Adapter<EarthPhotosAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val labelAbove: TextView
-        val imageView: ImageView
-        val labelBelow: TextView
-
-        init {
-            labelAbove = view.findViewById(R.id.labelAbove) as TextView
-            imageView = view.findViewById(R.id.imageView) as ImageView
-            labelBelow = view.findViewById(R.id.labelBelow) as TextView
-        }
+        val binding = PhotoRecyclerItemBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -33,10 +26,10 @@ class EarthPhotosAdapter(private val photos: EpicPhotosDTO) :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val p = photos[position]
-        holder.labelAbove.setText("${position + 1}/${photos.size} ${p.date}")
-        holder.labelBelow.setText(p.caption)
+        holder.binding.labelAbove.text = "${position+1}/${photos.size}\n${p.date}"
+        holder.binding.labelBelow.text = p.caption
         val date = p.date.split(" ")[0].replace("-", "/")
-        holder.imageView.load("https://epic.gsfc.nasa.gov/archive/natural/${date}/jpg/${p.image}.jpg")
+        holder.binding.imageView.load("https://epic.gsfc.nasa.gov/archive/natural/${date}/jpg/${p.image}.jpg")
     }
 
     override fun getItemCount() = photos.size

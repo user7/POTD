@@ -4,10 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chipGroup"
         android:layout_width="wrap_content"
@@ -41,18 +37,17 @@
 
     </com.google.android.material.chip.ChipGroup>
 
-    <com.geekbrains.potd.utils.CustomImageView
-        android:id="@+id/imageView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/label_image_desc"
-        android:padding="20dp"
+        android:orientation="horizontal"
+        app:layoutManager="LinearLayoutManager"
         app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chipGroup"
-        app:layout_constraintVertical_chainStyle="packed"
-        app:srcCompat="@drawable/bg_mars" />
+        app:layout_constraintVertical_chainStyle="packed" />
 
     <TextView
         android:id="@+id/description"
@@ -63,7 +58,7 @@
         app:layout_constraintBottom_toTopOf="@id/indicatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView"
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <LinearLayout

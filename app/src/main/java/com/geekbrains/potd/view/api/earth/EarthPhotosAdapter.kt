@@ -20,7 +20,7 @@ class EarthPhotosAdapter(private val photos: EpicPhotosDTO) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.earth_recycler_item, parent, false)
+            .inflate(R.layout.photo_recycler_item, parent, false)
         return ViewHolder(view)
     }
 

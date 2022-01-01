@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.recyclerview.widget.PagerSnapHelper
 import coil.load
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentMarsBinding
@@ -14,6 +15,7 @@ import com.geekbrains.potd.view.api.mars.MarsViewModel
 class MarsFragment : Fragment() {
     private var _binding: FragmentMarsBinding? = null
     val binding: FragmentMarsBinding get() = _binding!!
+    val adapter = MarsPhotosAdapter()
 
     val marsViewModel: MarsViewModel by viewModels()
 
@@ -36,6 +38,8 @@ class MarsFragment : Fragment() {
         binding.chipNextDay.setOnClickListener { marsViewModel.adjustDate(1) }
         binding.chipPrevDay.setOnClickListener { marsViewModel.adjustDate(-1) }
         binding.chipResetDate.setOnClickListener { marsViewModel.resetDate() }
+        binding.recyclerView.adapter = adapter
+        PagerSnapHelper().attachToRecyclerView(binding.recyclerView)
         marsViewModel.sendServerRequest()
         super.onViewCreated(view, savedInstanceState)
     }
@@ -43,25 +47,18 @@ class MarsFragment : Fragment() {
     private fun renderState(state: MarsViewModel.RequestState) {
         when (state) {
             is MarsViewModel.RequestState.Error -> {
-                binding.imageView.setImageResource(R.drawable.ic_load_error_vector)
-                binding.description.setText(state.error)
+                adapter.setData(null)
+                binding.description.text = state.error
             }
             is MarsViewModel.RequestState.Loading -> {
-                binding.imageView.setImageResource(R.drawable.bg_system)
+                adapter.setData(null)
                 binding.description.setText(R.string.label_description_loading)
             }
             is MarsViewModel.RequestState.Success -> {
-                var photos = state.response.photos
-                if (photos.size > 0) {
-                    val photo = photos[0]
-                    binding.imageView.load(photo.url) {}
-                    binding.imageView.visibility = View.VISIBLE
-                    val cameraName = photo.camera?.fullName ?: ""
-                    binding.description.setText("${photo.date} ${cameraName}")
-                } else {
-                    binding.imageView.setImageResource(R.drawable.ic_no_photo_vector)
-                    binding.description.setText("No images for ${marsViewModel.nasaDate.format()}")
-                }
+                adapter.setData(state.response)
+                val label = if (state.response.photos.isEmpty())
+                    "No photos for ${marsViewModel.nasaDate.format()}" else ""
+                binding.description.text = label
             }
         }
     }

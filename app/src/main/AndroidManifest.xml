@@ -12,19 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Default">
         <activity
-            android:name=".view.MainActivity"
-            android:exported="true">
-
-        </activity>
-
-        <activity
-            android:name=".view.api.ApiActivity"
-            android:exported="true">
-
-        </activity>
-
-        <activity
-            android:name=".view.api.ApiBottomActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

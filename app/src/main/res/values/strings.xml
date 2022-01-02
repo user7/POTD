@@ -12,5 +12,14 @@
     <string name="chipLabelToday">Today</string>
     <string name="theme_steel_desc">Steely Colors</string>
     <string name="theme_copper_desc">Copper Colors</string>
+    <string name="label_tabitem_mars">Mars</string>
+    <string name="label_tabitem_earth">Earth</string>
+    <string name="label_tabitem_system">System</string>
+    <string name="label_chip_next">Next</string>
+    <string name="label_chip_previous">Previous</string>
+    <string name="label_chip_today">Today</string>
+    <string name="label_chip_hd">HD</string>
+    <string name="label_description_loading">Loading ...</string>
+    <string name="label_image_desc">Picture of the day</string>
 
 </resources>

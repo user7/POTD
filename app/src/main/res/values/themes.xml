@@ -7,11 +7,19 @@
 
     <style name="Theme.Base" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="android:textViewStyle">@style/TextViewFont</item>
-        <item name="chipStyle">@style/ChipStyle</item>
+        <item name="chipStyle">@style/StyleChipSuggestion</item>
         <item name="textAppearanceLabelLarge">@style/StyleLabel</item>
         <item name="textAppearanceSubtitle1">@style/StyleText</item>
         <item name="shapeAppearanceSmallComponent">@style/StyleShapeSmallComponent</item>
         <item name="mainFont">@font/montserrat_medium</item>
+    </style>
+
+    <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
+        <item name="labelVisibilityMode">labeled</item>
+        <item name="colorSurface">@color/colorAccent</item>
+        <item name="colorOnSurface">@color/white</item>
+        <item name="colorPrimarySurface">@color/red</item>
+        <item name="colorOnPrimarySurface">@color/green</item>
     </style>
 
     <style name="StyleLabel" parent="TextAppearance.Material3.LabelLarge">
@@ -34,7 +42,23 @@
         <item name="android:fontFamily">?attr/mainFont</item>
     </style>
 
-    <style name="ChipStyle" parent="Widget.Material3.Chip.Suggestion">
+    <style name="StyleChipSuggestion" parent="Widget.Material3.Chip.Suggestion">
+        <item name="chipStrokeColor">@color/chip_stroke</item>
+        <item name="chipBackgroundColor">@color/chip_bg</item>
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="StyleChipButton" parent="Widget.Material3.Chip.Suggestion">
+        <item name="chipStrokeColor">@color/chip_stroke</item>
+        <item name="chipBackgroundColor">@color/chip_bg</item>
+        <item name="chipStrokeWidth">2dp</item>
+        <item name="android:textColor">?attr/colorOnPrimary</item>
+        <item name="chipIconVisible">true</item>
+        <item name="android:checkable">false</item>
+    </style>
+
+    <style name="StyleChipFilter" parent="Widget.Material3.Chip.Filter">
         <item name="chipStrokeColor">@color/chip_stroke</item>
         <item name="chipBackgroundColor">@color/chip_bg</item>
         <item name="chipStrokeWidth">2dp</item>
@@ -65,7 +89,7 @@
         <item name="colorSecondaryVariant">@color/copperSecondaryDarkColor</item>
         <item name="colorOnSecondary">@color/copperSecondaryTextColor</item>
 
-        <item name="chipStyle">@style/ChipStyle</item>
+        <item name="chipStyle">@style/StyleChipSuggestion</item>
     </style>
 
     <style name="Theme.Default" parent="Theme.Steel"/>

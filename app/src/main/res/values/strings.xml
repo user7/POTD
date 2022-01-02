@@ -10,8 +10,8 @@
     <string name="chipLabelYesterday2">Two days back</string>
     <string name="chipLabelYesterday">Yesterday</string>
     <string name="chipLabelToday">Today</string>
-    <string name="theme_steel_desc">Steely Colors</string>
-    <string name="theme_copper_desc">Copper Colors</string>
+    <string name="theme_steel_desc">Steel Theme</string>
+    <string name="theme_copper_desc">Copper Theme</string>
     <string name="label_tabitem_mars">Mars</string>
     <string name="label_tabitem_earth">Earth</string>
     <string name="label_tabitem_system">System</string>
@@ -21,5 +21,6 @@
     <string name="label_chip_hd">HD</string>
     <string name="label_description_loading">Loading ...</string>
     <string name="label_image_desc">Picture of the day</string>
+    <string name="toolabar_app_title">NASA</string>
 
 </resources>

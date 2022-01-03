@@ -30,9 +30,9 @@ class MainFragment : Fragment() {
     }
 
     private val navFragments = mapOf(
-        Pair(R.id.bottom_view_system, SystemFragment()),
-        Pair(R.id.bottom_view_earth, EarthFragment()),
-        Pair(R.id.bottom_view_mars, MarsFragment()),
+        Pair(R.id.bottomViewSystem, SystemFragment()),
+        Pair(R.id.bottomViewEarth, EarthFragment()),
+        Pair(R.id.bottomViewMars, MarsFragment()),
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -45,7 +45,7 @@ class MainFragment : Fragment() {
                 true
             } ?: false
         }
-        binding.bottomNavigationView.selectedItemId = R.id.bottom_view_system
+        binding.bottomNavigationView.selectedItemId = R.id.bottomViewSystem
         super.onViewCreated(view, savedInstanceState)
     }
 }

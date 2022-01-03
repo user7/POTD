@@ -9,11 +9,11 @@
         app:showAsAction="always">
         <menu>
             <item
-                android:id="@+id/themeSteel"
+                android:id="@+id/menuThemeSteel"
                 android:title="@string/theme_steel_desc"
                 app:showAsAction="ifRoom" />
             <item
-                android:id="@+id/themeCopper"
+                android:id="@+id/menuThemeCopper"
                 android:title="@string/theme_copper_desc"
                 app:showAsAction="ifRoom" />
         </menu>

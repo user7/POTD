@@ -10,8 +10,8 @@
     <string name="chipLabelYesterday2">Two days back</string>
     <string name="chipLabelYesterday">Yesterday</string>
     <string name="chipLabelToday">Today</string>
-    <string name="theme_steel_desc">Steel Theme</string>
-    <string name="theme_copper_desc">Copper Theme</string>
+    <string name="theme_steel_desc">Blue Theme</string>
+    <string name="theme_copper_desc">Orange Theme</string>
     <string name="label_tabitem_mars">Mars</string>
     <string name="label_tabitem_earth">Earth</string>
     <string name="label_tabitem_system">System</string>

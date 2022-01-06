@@ -23,8 +23,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
-            R.id.menuThemeSteel -> setThemeRecreate(R.style.Theme_Steel)
-            R.id.menuThemeCopper -> setThemeRecreate(R.style.Theme_Copper)
+            R.id.menuThemeSteel -> setThemeRecreate(R.style.Theme_Base_BlueGray)
+            R.id.menuThemeCopper -> setThemeRecreate(R.style.Theme_Base_OrangeGreen)
             else -> super.onOptionsItemSelected(item)
         }
     }

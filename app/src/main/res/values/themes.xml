@@ -12,6 +12,17 @@
         <item name="textAppearanceSubtitle1">@style/StyleText</item>
         <item name="shapeAppearanceSmallComponent">@style/StyleShapeSmallComponent</item>
         <item name="mainFont">@font/montserrat_medium</item>
+        <item name="collapsingToolbarLayoutStyle">@style/CollapsingToolbarStyle</item>
+    </style>
+
+    <style name="CollapsingToolbarStyle" parent="Widget.Material3.CollapsingToolbar">
+        <item name="materialThemeOverlay">@style/ToolbarThemeOverlay</item>
+    </style>
+
+    <style name="ToolbarThemeOverlay" parent="">
+        <item name="colorSurface">?attr/colorTertiary</item>
+        <item name="colorOnSurface">?attr/colorOnTertiary</item>
+        <item name="android:background">?attr/colorSurface</item>
     </style>
 
     <style name="StyleLabel" parent="TextAppearance.Material3.LabelLarge">

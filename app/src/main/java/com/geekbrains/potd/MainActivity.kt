@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.geekbrains.potd.databinding.ActivityMainBinding
+import com.geekbrains.potd.demo.CollapsingToolbarFragment
 
 class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
@@ -25,6 +26,14 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.menuThemeSteel -> setThemeRecreate(R.style.Theme_Base_BlueGray)
             R.id.menuThemeCopper -> setThemeRecreate(R.style.Theme_Base_OrangeGreen)
+            R.id.menuCollapsingToolbar -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.mainContainer, CollapsingToolbarFragment())
+                    .addToBackStack(null)
+                    .commit()
+                true
+            }
             else -> super.onOptionsItemSelected(item)
         }
     }

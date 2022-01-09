@@ -29,6 +29,10 @@
                 android:id="@+id/menuCollapsingToolbar"
                 android:title="CollapsingToolbarLayout"
                 app:showAsAction="always" />
+            <item
+                android:id="@+id/menuMotionFragment"
+                android:title="MotionLayout"
+                app:showAsAction="always" />
         </menu>
     </item>
 </menu>

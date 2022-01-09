@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.geekbrains.potd.databinding.ActivityMainBinding
 import com.geekbrains.potd.demo.CollapsingToolbarFragment
+import com.geekbrains.potd.demo.MotionFragment
 
 class MainActivity : AppCompatActivity() {
     val mainViewModel: MainViewModel by viewModels()
@@ -30,6 +31,14 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.mainContainer, CollapsingToolbarFragment())
+                    .addToBackStack(null)
+                    .commit()
+                true
+            }
+            R.id.menuMotionFragment -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.mainContainer, MotionFragment())
                     .addToBackStack(null)
                     .commit()
                 true

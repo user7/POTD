@@ -11,7 +11,7 @@ import com.geekbrains.potd.demo.CollapsingToolbarFragment
 import com.geekbrains.potd.demo.MotionFragment
 
 class MainActivity : AppCompatActivity() {
-    val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun setThemeRecreate(themeId: Int): Boolean {
+    private fun setThemeRecreate(themeId: Int): Boolean {
         mainViewModel.themeId = themeId
         recreate()
         return true

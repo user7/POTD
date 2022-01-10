@@ -1,7 +1,4 @@
-<resources
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools">
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
     <attr name="mainFont" format="string" />
 
@@ -116,4 +113,19 @@
 
     <style name="Theme.Default" parent="Theme.Base.BlueGray" />
 
+    <style name="ColoredButton" parent="ShapeAppearanceOverlay.Material3.Button">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="ColoredButton.Red">
+        <item name="backgroundTint">@color/red</item>
+    </style>
+
+    <style name="ColoredButton.Orange">
+        <item name="backgroundTint">#FFB300</item>
+    </style>
+
+    <style name="ColoredButton.Green">
+        <item name="backgroundTint">#006C00</item>
+    </style>
 </resources>

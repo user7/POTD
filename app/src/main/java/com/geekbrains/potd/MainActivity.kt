@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import com.geekbrains.potd.databinding.ActivityMainBinding
+import com.geekbrains.potd.demo.AnimationFragment
 import com.geekbrains.potd.demo.CollapsingToolbarFragment
 import com.geekbrains.potd.demo.MotionFragment
 
@@ -30,6 +31,7 @@ class MainActivity : AppCompatActivity() {
             R.id.menuThemeCopper -> setThemeRecreate(R.style.Theme_Base_OrangeGreen)
             R.id.menuCollapsingToolbar -> pushFragment(CollapsingToolbarFragment())
             R.id.menuMotionFragment -> pushFragment(MotionFragment())
+            R.id.menuAnimationFragment -> pushFragment(AnimationFragment())
             else -> super.onOptionsItemSelected(item)
         }
     }

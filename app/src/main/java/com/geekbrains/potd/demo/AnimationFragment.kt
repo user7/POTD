@@ -5,8 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.transition.AutoTransition
 import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
+import androidx.transition.ChangeBounds
 import androidx.transition.Fade
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentAnimationBinding
@@ -28,7 +29,9 @@ class AnimationFragment : Fragment() {
         binding.buttonShow.setOnClickListener {
             TransitionManager.beginDelayedTransition(
                 binding.animationContainer,
-                AutoTransition()
+                TransitionSet()
+                    .addTransition(Fade())
+                    .addTransition(ChangeBounds())
             )
             if (binding.animationGroup.visibility == View.GONE) {
                 binding.animationGroup.visibility = View.VISIBLE

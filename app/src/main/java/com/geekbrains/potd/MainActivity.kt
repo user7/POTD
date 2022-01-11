@@ -1,30 +1,55 @@
 package com.geekbrains.potd
 
 import android.os.Bundle
+import android.view.MenuItem
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import com.geekbrains.potd.databinding.ActivityMainBinding
-import com.geekbrains.potd.fragments.earth.EarthFragment
-import com.geekbrains.potd.fragments.mars.MarsFragment
-import com.geekbrains.potd.fragments.system.SystemFragment
+import com.geekbrains.potd.demo.CollapsingToolbarFragment
+import com.geekbrains.potd.demo.MotionFragment
 
 class MainActivity : AppCompatActivity() {
+    val mainViewModel: MainViewModel by viewModels()
+
     private lateinit var binding: ActivityMainBinding
-    private val navFragments = mapOf(
-        Pair(R.id.bottom_view_system, SystemFragment()),
-        Pair(R.id.bottom_view_earth, EarthFragment()),
-        Pair(R.id.bottom_view_mars, MarsFragment()),
-    )
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+        mainViewModel.themeId?.let { setTheme(it) }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        binding.bottomNavigationView.setOnItemSelectedListener {
-            navFragments[it.itemId]?.let { fragment ->
-                supportFragmentManager.beginTransaction().replace(R.id.container, fragment).commit()
+        binding.topToolbar.setOnMenuItemClickListener { onOptionsItemSelected(it) }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.menuThemeSteel -> setThemeRecreate(R.style.Theme_Base_BlueGray)
+            R.id.menuThemeCopper -> setThemeRecreate(R.style.Theme_Base_OrangeGreen)
+            R.id.menuCollapsingToolbar -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.mainContainer, CollapsingToolbarFragment())
+                    .addToBackStack(null)
+                    .commit()
                 true
-            } ?: false
+            }
+            R.id.menuMotionFragment -> {
+                supportFragmentManager
+                    .beginTransaction()
+                    .replace(R.id.mainContainer, MotionFragment())
+                    .addToBackStack(null)
+                    .commit()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        binding.bottomNavigationView.selectedItemId = R.id.bottom_view_system
+    }
+
+    fun setThemeRecreate(themeId: Int): Boolean {
+        mainViewModel.themeId = themeId
+        recreate()
+        return true
     }
 }

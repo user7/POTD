@@ -3,7 +3,12 @@
     android:height="@dimen/indicator_size"
     android:viewportWidth="72"
     android:viewportHeight="72">
-  <path
-      android:pathData="M36,36 m-28,0 a28,28 0,1,1 56,0 a28,28 0,1,1 -56,0"
-      android:fillColor="?attr/colorPrimaryVariant"/>
+    <path
+        android:fillColor="?attr/colorSurface"
+        android:pathData="M36,36 m-28,0 a28,28 0,1,1 56,0 a28,28 0,1,1 -56,0" />
+    <path
+        android:pathData="M36,36 m-28,0 a28,28 0,1,1 56,0 a28,28 0,1,1 -56,0"
+        android:strokeWidth="10"
+        android:strokeColor="?attr/colorOnBackground"
+        android:strokeLineJoin="round" />
 </vector>

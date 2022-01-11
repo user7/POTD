@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/appBarTheme"
+        android:icon="@drawable/ic_eye"
+        android:title="@string/theme"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menuThemeSteel"
+                android:title="@string/theme_steel_desc"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/menuThemeCopper"
+                android:title="@string/theme_copper_desc"
+                app:showAsAction="ifRoom" />
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/appBarMore"
+        android:icon="@drawable/ic_baseline_more_vert_24"
+        android:title="@string/theme"
+        app:showAsAction="always">
+        <menu>
+            <item
+                android:id="@+id/menuCollapsingToolbar"
+                android:title="CollapsingToolbarLayout"
+                app:showAsAction="always" />
+            <item
+                android:id="@+id/menuMotionFragment"
+                android:title="MotionLayout"
+                app:showAsAction="always" />
+        </menu>
+    </item>
+</menu>

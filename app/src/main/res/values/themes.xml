@@ -5,33 +5,32 @@
     <!-- Base application theme. -->
     <attr name="mainFont" format="string" />
 
-    <style name="Theme.Base" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Theme.Base" parent="Theme.Material3.Light.NoActionBar">
         <item name="android:textViewStyle">@style/TextViewFont</item>
         <item name="chipStyle">@style/StyleChipSuggestion</item>
         <item name="textAppearanceLabelLarge">@style/StyleLabel</item>
         <item name="textAppearanceSubtitle1">@style/StyleText</item>
         <item name="shapeAppearanceSmallComponent">@style/StyleShapeSmallComponent</item>
         <item name="mainFont">@font/montserrat_medium</item>
+        <item name="collapsingToolbarLayoutStyle">@style/CollapsingToolbarStyle</item>
     </style>
 
-    <style name="BottomNavigationView" parent="Widget.Design.BottomNavigationView">
-        <item name="labelVisibilityMode">labeled</item>
-        <item name="colorSurface">@color/colorAccent</item>
-        <item name="colorOnSurface">@color/white</item>
-        <item name="colorPrimarySurface">@color/red</item>
-        <item name="colorOnPrimarySurface">@color/green</item>
+    <style name="CollapsingToolbarStyle" parent="Widget.Material3.CollapsingToolbar">
+        <item name="materialThemeOverlay">@style/ToolbarThemeOverlay</item>
+    </style>
+
+    <style name="ToolbarThemeOverlay" parent="">
+        <item name="colorSurface">?attr/colorTertiary</item>
+        <item name="colorOnSurface">?attr/colorOnTertiary</item>
+        <item name="android:background">?attr/colorSurface</item>
     </style>
 
     <style name="StyleLabel" parent="TextAppearance.Material3.LabelLarge">
-        <item name="fontFamily">?attr/mainFont</item>
         <item name="android:fontFamily">?attr/mainFont</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="StyleText" parent="TextAppearance.Material3.BodyLarge">
-        <item name="fontFamily">?attr/mainFont</item>
         <item name="android:fontFamily">?attr/mainFont</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="StyleShapeSmallComponent">
@@ -43,54 +42,78 @@
     </style>
 
     <style name="StyleChipSuggestion" parent="Widget.Material3.Chip.Suggestion">
-        <item name="chipStrokeColor">@color/chip_stroke</item>
-        <item name="chipBackgroundColor">@color/chip_bg</item>
         <item name="chipStrokeWidth">2dp</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
     <style name="StyleChipButton" parent="Widget.Material3.Chip.Suggestion">
-        <item name="chipStrokeColor">@color/chip_stroke</item>
-        <item name="chipBackgroundColor">@color/chip_bg</item>
         <item name="chipStrokeWidth">2dp</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
         <item name="chipIconVisible">true</item>
         <item name="android:checkable">false</item>
     </style>
 
     <style name="StyleChipFilter" parent="Widget.Material3.Chip.Filter">
-        <item name="chipStrokeColor">@color/chip_stroke</item>
-        <item name="chipBackgroundColor">@color/chip_bg</item>
         <item name="chipStrokeWidth">2dp</item>
-        <item name="android:textColor">?attr/colorOnPrimary</item>
     </style>
 
-    <style name="Theme.Steel" parent="Theme.Base">
-        <item name="colorOnSurface">@color/steelPrimaryColor</item>
-
-        <item name="colorPrimary">@color/steelPrimaryColor</item>
-        <item name="colorPrimaryVariant">@color/steelPrimaryDarkColor</item>
-        <item name="colorOnPrimary">@color/steelPrimaryTextColor</item>
-
-        <item name="colorSecondary">@color/steelSecondaryColor</item>
-        <item name="colorSecondaryVariant">@color/steelSecondaryDarkColor</item>
-        <item name="colorOnSecondary">@color/steelSecondaryTextColor</item>
-
+    <style name="Theme.Base.BlueGray">
+        <item name="colorPrimary">@color/md_bluegray_light_primary</item>
+        <item name="colorOnPrimary">@color/md_bluegray_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_bluegray_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_bluegray_light_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/md_bluegray_light_secondary</item>
+        <item name="colorOnSecondary">@color/md_bluegray_light_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_bluegray_light_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_bluegray_light_onSecondaryContainer</item>
+        <item name="colorTertiary">@color/md_bluegray_light_tertiary</item>
+        <item name="colorOnTertiary">@color/md_bluegray_light_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_bluegray_light_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_bluegray_light_onTertiaryContainer</item>
+        <item name="colorError">@color/md_bluegray_light_error</item>
+        <item name="colorErrorContainer">@color/md_bluegray_light_errorContainer</item>
+        <item name="colorOnError">@color/md_bluegray_light_onError</item>
+        <item name="colorOnErrorContainer">@color/md_bluegray_light_onErrorContainer</item>
+        <item name="android:colorBackground">@color/md_bluegray_light_background</item>
+        <item name="colorOnBackground">@color/md_bluegray_light_onBackground</item>
+        <item name="colorSurface">@color/md_bluegray_light_surface</item>
+        <item name="colorOnSurface">@color/md_bluegray_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_bluegray_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_bluegray_light_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_bluegray_light_outline</item>
+        <item name="colorOnSurfaceInverse">@color/md_bluegray_light_inverseOnSurface</item>
+        <item name="colorSurfaceInverse">@color/md_bluegray_light_inverseSurface</item>
+        <item name="colorPrimaryInverse">@color/md_bluegray_light_primaryInverse</item>
     </style>
 
-    <style name="Theme.Copper" parent="Theme.Base">
-        <item name="colorOnSurface">@color/copperPrimaryColor</item>
-
-        <item name="colorPrimary">@color/copperPrimaryColor</item>
-        <item name="colorPrimaryVariant">@color/copperPrimaryDarkColor</item>
-        <item name="colorOnPrimary">@color/copperPrimaryTextColor</item>
-
-        <item name="colorSecondary">@color/copperSecondaryColor</item>
-        <item name="colorSecondaryVariant">@color/copperSecondaryDarkColor</item>
-        <item name="colorOnSecondary">@color/copperSecondaryTextColor</item>
-
-        <item name="chipStyle">@style/StyleChipSuggestion</item>
+    <style name="Theme.Base.OrangeGreen">
+        <item name="colorPrimary">@color/md_orangegreen_light_primary</item>
+        <item name="colorOnPrimary">@color/md_orangegreen_light_onPrimary</item>
+        <item name="colorPrimaryContainer">@color/md_orangegreen_light_primaryContainer</item>
+        <item name="colorOnPrimaryContainer">@color/md_orangegreen_light_onPrimaryContainer</item>
+        <item name="colorSecondary">@color/md_orangegreen_light_secondary</item>
+        <item name="colorOnSecondary">@color/md_orangegreen_light_onSecondary</item>
+        <item name="colorSecondaryContainer">@color/md_orangegreen_light_secondaryContainer</item>
+        <item name="colorOnSecondaryContainer">@color/md_orangegreen_light_onSecondaryContainer
+        </item>
+        <item name="colorTertiary">@color/md_orangegreen_light_tertiary</item>
+        <item name="colorOnTertiary">@color/md_orangegreen_light_onTertiary</item>
+        <item name="colorTertiaryContainer">@color/md_orangegreen_light_tertiaryContainer</item>
+        <item name="colorOnTertiaryContainer">@color/md_orangegreen_light_onTertiaryContainer</item>
+        <item name="colorError">@color/md_orangegreen_light_error</item>
+        <item name="colorErrorContainer">@color/md_orangegreen_light_errorContainer</item>
+        <item name="colorOnError">@color/md_orangegreen_light_onError</item>
+        <item name="colorOnErrorContainer">@color/md_orangegreen_light_onErrorContainer</item>
+        <item name="android:colorBackground">@color/md_orangegreen_light_background</item>
+        <item name="colorOnBackground">@color/md_orangegreen_light_onBackground</item>
+        <item name="colorSurface">@color/md_orangegreen_light_surface</item>
+        <item name="colorOnSurface">@color/md_orangegreen_light_onSurface</item>
+        <item name="colorSurfaceVariant">@color/md_orangegreen_light_surfaceVariant</item>
+        <item name="colorOnSurfaceVariant">@color/md_orangegreen_light_onSurfaceVariant</item>
+        <item name="colorOutline">@color/md_orangegreen_light_outline</item>
+        <item name="colorOnSurfaceInverse">@color/md_orangegreen_light_inverseOnSurface</item>
+        <item name="colorSurfaceInverse">@color/md_orangegreen_light_inverseSurface</item>
+        <item name="colorPrimaryInverse">@color/md_orangegreen_light_primaryInverse</item>
     </style>
 
-    <style name="Theme.Default" parent="Theme.Steel"/>
+    <style name="Theme.Default" parent="Theme.Base.BlueGray" />
+
 </resources>

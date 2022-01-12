@@ -7,3 +7,5 @@ data class EpicPhotoDTO(
     val version: String,
     val date: String,
 )
+
+typealias EpicPhotosDTO = ArrayList<EpicPhotoDTO>

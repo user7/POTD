@@ -2,6 +2,8 @@ package com.geekbrains.potd
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.transition.TransitionManager
+import androidx.transition.Fade
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun pushFragment(fragment: Fragment): Boolean {
+        TransitionManager.beginDelayedTransition(binding.mainConstraintLayout, Fade())
         supportFragmentManager
             .beginTransaction()
             .replace(R.id.mainContainer, fragment)

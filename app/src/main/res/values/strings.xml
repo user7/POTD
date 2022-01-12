@@ -15,6 +15,7 @@
     <string name="label_tabitem_mars">Mars</string>
     <string name="label_tabitem_earth">Earth</string>
     <string name="label_tabitem_system">System</string>
+    <string name="label_tabitem_bookmarks">Bookmarks</string>
     <string name="label_chip_next">Next</string>
     <string name="label_chip_previous">Previous</string>
     <string name="label_chip_today">Today</string>

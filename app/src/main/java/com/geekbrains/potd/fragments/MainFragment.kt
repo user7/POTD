@@ -7,13 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentMainBinding
+import com.geekbrains.potd.fragments.bookmarks.BookmarksFragment
 import com.geekbrains.potd.fragments.earth.EarthFragment
 import com.geekbrains.potd.fragments.mars.MarsFragment
 import com.geekbrains.potd.fragments.system.SystemFragment
 
 class MainFragment : Fragment() {
-    private var _binding : FragmentMainBinding? = null
-    private val binding : FragmentMainBinding get() = _binding!!
+    private var _binding: FragmentMainBinding? = null
+    private val binding: FragmentMainBinding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +34,7 @@ class MainFragment : Fragment() {
         Pair(R.id.bottomViewSystem, SystemFragment()),
         Pair(R.id.bottomViewEarth, EarthFragment()),
         Pair(R.id.bottomViewMars, MarsFragment()),
+        Pair(R.id.bottomViewBookmarks, BookmarksFragment()),
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

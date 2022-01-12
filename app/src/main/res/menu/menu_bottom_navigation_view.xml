@@ -15,4 +15,9 @@
         android:icon="@drawable/ic_tabitem_mars"
         android:title="@string/label_tabitem_mars" />
 
+    <item
+        android:id="@+id/bottomViewBookmarks"
+        android:icon="@drawable/ic_bookmarks"
+        android:title="@string/label_tabitem_bookmarks" />
+
 </menu>

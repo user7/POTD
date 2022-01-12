@@ -7,20 +7,24 @@ import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.transition.ChangeBounds
 import androidx.transition.ChangeImageTransform
 import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import coil.load
+import com.geekbrains.potd.MainViewModel
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentSystemBinding
+import com.geekbrains.potd.fragments.bookmarks.Bookmark
 
 class SystemFragment : Fragment() {
     private var _binding: FragmentSystemBinding? = null
     val binding: FragmentSystemBinding get() = _binding!!
 
-    val fragmentViewModel: SystemViewModel by viewModels()
+    private val fragmentViewModel: SystemViewModel by viewModels()
+    private val activityViewModel: MainViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -46,6 +50,7 @@ class SystemFragment : Fragment() {
         binding.chipHD.setOnClickListener { fragmentViewModel.adjustDayShift(0) }
         fragmentViewModel.sendServerRequest()
         binding.imageView.setOnClickListener { imageViewResize() }
+        binding.bookmarkCheckbox.setOnCheckedChangeListener { _, on -> handleBookmark(on) }
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -53,16 +58,19 @@ class SystemFragment : Fragment() {
         when (state) {
             is SystemViewModel.RequestState.Error -> {
                 binding.imageView.setImageResource(R.drawable.ic_load_error_vector)
-                binding.description.setText(state.error)
+                binding.description.text = state.error
             }
             is SystemViewModel.RequestState.Loading -> {
                 binding.imageView.setImageResource(R.drawable.bg_system)
                 binding.description.setText(R.string.label_description_loading)
+                binding.bookmarkCheckbox.visibility = View.GONE
             }
             is SystemViewModel.RequestState.Success -> {
                 val url = if (binding.chipHD.isChecked) state.response.hdurl else state.response.url
                 binding.imageView.load(url) {}
-                binding.description.setText(state.response.title)
+                binding.description.text = state.response.title
+                binding.bookmarkCheckbox.isChecked = isBookmarkSet()
+                binding.bookmarkCheckbox.visibility = View.VISIBLE
             }
         }
     }
@@ -84,4 +92,15 @@ class SystemFragment : Fragment() {
             params.height = FrameLayout.LayoutParams.WRAP_CONTENT
         }
     }
+
+    private fun makeBookmark(): Bookmark.Potd? =
+        (fragmentViewModel.state.value as? SystemViewModel.RequestState.Success)?.let { state ->
+            Bookmark.Potd(state.response, fragmentViewModel.nasaDate.format())
+        }
+
+    private fun handleBookmark(add: Boolean) =
+        makeBookmark()?.let { bookmark -> activityViewModel.editBookmark(bookmark, add) }
+
+    private fun isBookmarkSet() =
+        makeBookmark()?.let { activityViewModel.isBookmarkPresent(it) } ?: false
 }

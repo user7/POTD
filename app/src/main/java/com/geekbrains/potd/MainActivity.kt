@@ -2,15 +2,19 @@ package com.geekbrains.potd
 
 import android.os.Bundle
 import android.view.MenuItem
+import androidx.transition.TransitionManager
+import androidx.transition.Fade
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import com.geekbrains.potd.databinding.ActivityMainBinding
+import com.geekbrains.potd.demo.AnimationFragment
 import com.geekbrains.potd.demo.CollapsingToolbarFragment
 import com.geekbrains.potd.demo.MotionFragment
 
 class MainActivity : AppCompatActivity() {
-    val mainViewModel: MainViewModel by viewModels()
+    private val mainViewModel: MainViewModel by viewModels()
 
     private lateinit var binding: ActivityMainBinding
 
@@ -27,29 +31,26 @@ class MainActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.menuThemeSteel -> setThemeRecreate(R.style.Theme_Base_BlueGray)
             R.id.menuThemeCopper -> setThemeRecreate(R.style.Theme_Base_OrangeGreen)
-            R.id.menuCollapsingToolbar -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.mainContainer, CollapsingToolbarFragment())
-                    .addToBackStack(null)
-                    .commit()
-                true
-            }
-            R.id.menuMotionFragment -> {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.mainContainer, MotionFragment())
-                    .addToBackStack(null)
-                    .commit()
-                true
-            }
+            R.id.menuCollapsingToolbar -> pushFragment(CollapsingToolbarFragment())
+            R.id.menuMotionFragment -> pushFragment(MotionFragment())
+            R.id.menuAnimationFragment -> pushFragment(AnimationFragment())
             else -> super.onOptionsItemSelected(item)
         }
     }
 
-    fun setThemeRecreate(themeId: Int): Boolean {
+    private fun setThemeRecreate(themeId: Int): Boolean {
         mainViewModel.themeId = themeId
         recreate()
+        return true
+    }
+
+    private fun pushFragment(fragment: Fragment): Boolean {
+        TransitionManager.beginDelayedTransition(binding.mainConstraintLayout, Fade())
+        supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.mainContainer, fragment)
+            .addToBackStack(null)
+            .commit()
         return true
     }
 }

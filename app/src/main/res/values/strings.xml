@@ -59,5 +59,11 @@
         "and more recently with desktop publishing software like Aldus PageMaker "
         "including versions of Lorem Ipsum.\n"
     </string>
+    <string name="menu_animation_fragment">AnimationFragment</string>
+    <string name="menu_motion_layout">MotionLayout</string>
+    <string name="menu_collapsingtoolbar">CollapsingToolbar</string>
+    <string name="button_label_red">RED</string>
+    <string name="button_label_orange">ORANGE</string>
+    <string name="button_label_green">GREEN</string>
 
 </resources>

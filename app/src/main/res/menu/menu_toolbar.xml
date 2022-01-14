@@ -23,16 +23,20 @@
         android:id="@+id/appBarMore"
         android:icon="@drawable/ic_baseline_more_vert_24"
         android:title="@string/theme"
-        app:showAsAction="always">
+        app:showAsAction="ifRoom">
         <menu>
             <item
                 android:id="@+id/menuCollapsingToolbar"
-                android:title="CollapsingToolbarLayout"
-                app:showAsAction="always" />
+                android:title="@string/menu_collapsingtoolbar"
+                app:showAsAction="ifRoom" />
             <item
                 android:id="@+id/menuMotionFragment"
-                android:title="MotionLayout"
-                app:showAsAction="always" />
+                android:title="@string/menu_motion_layout"
+                app:showAsAction="ifRoom" />
+            <item
+                android:id="@+id/menuAnimationFragment"
+                android:title="@string/menu_animation_fragment"
+                app:showAsAction="ifRoom" />
         </menu>
     </item>
 </menu>

@@ -9,8 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentMarsBinding
+import com.geekbrains.potd.fragments.BookmarkableFragmentBase
+import com.geekbrains.potd.fragments.bookmarks.Bookmark
 
-class MarsFragment : Fragment() {
+class MarsFragment : BookmarkableFragmentBase() {
     private var _binding: FragmentMarsBinding? = null
     val binding: FragmentMarsBinding get() = _binding!!
     val adapter = MarsPhotosAdapter()

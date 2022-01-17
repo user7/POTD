@@ -67,7 +67,7 @@ class NavFragment : Fragment() {
             else -> null
         }?.let { fragmentFactory ->
             val frag = fragmentFactory()
-            (frag as? SystemFragment)?.let { frag.openAtBookmark = bookmark }
+            frag.startingBookmark = bookmark
             navigateTo(frag)
         }
     }

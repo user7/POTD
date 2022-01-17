@@ -1,12 +1,12 @@
 package com.geekbrains.potd.fragments.system
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
 import android.widget.ImageView
-import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
 import androidx.transition.ChangeBounds
@@ -17,25 +17,21 @@ import coil.load
 import com.geekbrains.potd.MainViewModel
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentSystemBinding
+import com.geekbrains.potd.fragments.BookmarkableFragmentBase
 import com.geekbrains.potd.fragments.bookmarks.Bookmark
 
-class SystemFragment : Fragment() {
+class SystemFragment : BookmarkableFragmentBase() {
     private var _binding: FragmentSystemBinding? = null
     val binding: FragmentSystemBinding get() = _binding!!
 
     private val fragmentViewModel: SystemViewModel by viewModels()
     private val activityViewModel: MainViewModel by activityViewModels()
-    var openAtBookmark: Bookmark? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        (openAtBookmark as? Bookmark.Potd)?.let {
-            fragmentViewModel.nasaDate.setFromApiDate(it.apiDate)
-            openAtBookmark = null
-        }
         _binding = FragmentSystemBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -57,6 +53,13 @@ class SystemFragment : Fragment() {
         binding.imageView.setOnClickListener { imageViewResize() }
         binding.bookmarkCheckbox.setOnCheckedChangeListener { _, on -> setBookmarkedState(on) }
         super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onAttach(context: Context) {
+        (startingBookmark as? Bookmark.Potd)?.let {
+            fragmentViewModel.nasaDate.setFromApiDate(it.apiDate)
+        }
+        super.onAttach(context)
     }
 
     private fun renderState(state: SystemViewModel.RequestState) {

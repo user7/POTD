@@ -9,8 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.PagerSnapHelper
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentEarthBinding
+import com.geekbrains.potd.fragments.BookmarkableFragmentBase
+import com.geekbrains.potd.fragments.bookmarks.Bookmark
 
-class EarthFragment : Fragment() {
+class EarthFragment : BookmarkableFragmentBase() {
     private var _binding: FragmentEarthBinding? = null
     val binding: FragmentEarthBinding get() = _binding!!
 

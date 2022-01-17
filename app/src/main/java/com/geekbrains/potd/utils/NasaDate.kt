@@ -33,4 +33,15 @@ class NasaDate {
         cal.add(Calendar.DAY_OF_MONTH, dayShift)
         return dateFormat.format(cal.time)
     }
+
+    fun setFromApiDate(date: String) {
+        dayShift = 0
+        val curCal = Calendar.getInstance(Locale.getDefault())
+        curCal.time = dateFormat.parse(format())!!
+
+        val cal = Calendar.getInstance(Locale.getDefault())
+        cal.time = dateFormat.parse(date)!!
+
+        dayShift = Math.round((cal.timeInMillis - curCal.timeInMillis + 0f) / (24 * 60 * 60 * 1000))
+    }
 }

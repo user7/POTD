@@ -9,12 +9,12 @@ import androidx.fragment.app.activityViewModels
 import com.geekbrains.potd.MainViewModel
 import com.geekbrains.potd.databinding.FragmentBookmarksBinding
 
-class BookmarksFragment : Fragment() {
+class BookmarksFragment(navigate: (Bookmark) -> Unit) : Fragment() {
     private val mainViewModel: MainViewModel by activityViewModels()
 
     private var _binding: FragmentBookmarksBinding? = null
     private val binding: FragmentBookmarksBinding get() = _binding!!
-    private val adapter = BookmarksAdapter()
+    private val adapter = BookmarksAdapter(navigate)
 
     override fun onCreateView(
         inflater: LayoutInflater,

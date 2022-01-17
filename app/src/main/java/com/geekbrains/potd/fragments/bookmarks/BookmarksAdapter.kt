@@ -5,9 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.potd.databinding.FragmentBookmarksItemPotdBinding
+import com.geekbrains.potd.fragments.NavFragment
 import java.lang.IllegalArgumentException
 
-class BookmarksAdapter : RecyclerView.Adapter<BookmarksAdapter.BookmarkHolder>() {
+class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
+    RecyclerView.Adapter<BookmarksAdapter.BookmarkHolder>() {
+
     var data = Bookmarks()
         set(data_) {
             field = data_
@@ -45,24 +48,24 @@ class BookmarksAdapter : RecyclerView.Adapter<BookmarksAdapter.BookmarkHolder>()
                 val potd = data[position] as Bookmark.Potd
                 holder.binding.bookmarkDate.text = potd.apiDate
                 holder.binding.bookmarkText.text = potd.data.title
-                holder.data = potd
+                holder.bookmark = potd
             }
         }
     }
 
     override fun getItemCount(): Int = data.size
 
-    class PotdBookmarkHolder(val binding: FragmentBookmarksItemPotdBinding) :
+    inner class PotdBookmarkHolder(val binding: FragmentBookmarksItemPotdBinding) :
         BookmarkHolder(binding.root) {
 
-        var data: Bookmark.Potd? = null
+        var bookmark: Bookmark.Potd? = null
 
         init {
             binding.root.setOnClickListener { gotoBookmark() }
         }
 
         private fun gotoBookmark() {
-            TODO("implement navigation")
+            bookmark?.let { navigate(it) }
         }
     }
 }

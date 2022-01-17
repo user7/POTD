@@ -25,12 +25,17 @@ class SystemFragment : Fragment() {
 
     private val fragmentViewModel: SystemViewModel by viewModels()
     private val activityViewModel: MainViewModel by activityViewModels()
+    var openAtBookmark: Bookmark? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        (openAtBookmark as? Bookmark.Potd)?.let {
+            fragmentViewModel.nasaDate.setFromApiDate(it.apiDate)
+            openAtBookmark = null
+        }
         _binding = FragmentSystemBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -50,7 +55,7 @@ class SystemFragment : Fragment() {
         binding.chipHD.setOnClickListener { fragmentViewModel.adjustDayShift(0) }
         fragmentViewModel.sendServerRequest()
         binding.imageView.setOnClickListener { imageViewResize() }
-        binding.bookmarkCheckbox.setOnCheckedChangeListener { _, on -> handleBookmark(on) }
+        binding.bookmarkCheckbox.setOnCheckedChangeListener { _, on -> setBookmarkedState(on) }
         super.onViewCreated(view, savedInstanceState)
     }
 
@@ -93,13 +98,13 @@ class SystemFragment : Fragment() {
         }
     }
 
-    private fun makeBookmark(): Bookmark.Potd? =
-        (fragmentViewModel.state.value as? SystemViewModel.RequestState.Success)?.let { state ->
-            Bookmark.Potd(state.response, fragmentViewModel.nasaDate.format())
-        }
+    private fun makeBookmark(): Bookmark.Potd? {
+        return (fragmentViewModel.state.value as? SystemViewModel.RequestState.Success)
+            ?.let { Bookmark.Potd(it.response, fragmentViewModel.nasaDate.format()) }
+    }
 
-    private fun handleBookmark(add: Boolean) =
-        makeBookmark()?.let { bookmark -> activityViewModel.editBookmark(bookmark, add) }
+    private fun setBookmarkedState(on: Boolean) =
+        makeBookmark()?.let { activityViewModel.editBookmark(it, on) }
 
     private fun isBookmarkSet() =
         makeBookmark()?.let { activityViewModel.isBookmarkPresent(it) } ?: false

@@ -93,23 +93,16 @@
             android:layout_marginStart="7dp"
             android:layout_marginEnd="7dp"
             android:src="@drawable/ic_indicator_off" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
-            android:src="@drawable/ic_indicator_off" />
     </LinearLayout>
 
     <CheckBox
-        android:id="@+id/bookmark_checkbox"
+        android:id="@+id/bookmarkCheckbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="@dimen/bookmark_button_margin"
         android:layout_marginBottom="@dimen/bookmark_button_margin"
         android:button="@drawable/ic_add_bookmark"
-        android:gravity="bottom|right|end"
+        android:gravity="bottom|end"
         android:minWidth="0dp"
         android:minHeight="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

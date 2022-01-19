@@ -8,15 +8,17 @@ import androidx.viewbinding.ViewBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemEpicBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemMarsBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemPotdBinding
+import com.geekbrains.potd.fragments.IdentityDiffUtil
 import java.lang.IllegalArgumentException
 
 class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
     RecyclerView.Adapter<BookmarksAdapter.BookmarkHolder>() {
 
     private var data = Bookmarks()
-    fun setData(data_ : Bookmarks) {
-        data = data_
-        notifyDataSetChanged()
+    fun setData(data : Bookmarks) {
+        val oldData = this.data
+        this.data = data
+        IdentityDiffUtil.notifyDataChanged(oldData, data, this)
     }
 
     open class BookmarkHolder(view: View) : RecyclerView.ViewHolder(view)

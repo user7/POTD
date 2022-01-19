@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemEpicBinding
+import com.geekbrains.potd.databinding.FragmentBookmarksItemMarsBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemPotdBinding
 import java.lang.IllegalArgumentException
 
@@ -22,6 +23,7 @@ class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
     enum class BookmarkType {
         POTD,
         EPIC,
+        MARS,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BookmarkHolder {
@@ -41,6 +43,14 @@ class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
                     false
                 )
                 return EpicBookmarkHolder(binding)
+            }
+            BookmarkType.MARS.ordinal -> {
+                val binding = FragmentBookmarksItemMarsBinding.inflate(
+                    LayoutInflater.from(parent.context),
+                    parent,
+                    false
+                )
+                return MarsBookmarkHolder(binding)
             }
             else -> throw IllegalArgumentException("Unsupported viewType $viewType")
         }
@@ -68,6 +78,13 @@ class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
                 holder.binding.bookmarkText.text = bookmark.data.getOrNull(0)?.caption
                 holder.bookmark = bookmark
             }
+            is MarsBookmarkHolder -> {
+                val bookmark = data[position] as Bookmark.Mars
+                holder.binding.bookmarkDate.text = bookmark.apiDate
+                val camera = bookmark.data.photos.getOrNull(0)?.camera
+                holder.binding.bookmarkText.text = camera?.shortName ?: ""
+                holder.bookmark = bookmark
+            }
             else -> {
                 TODO("unknown holder type $holder in BookmarksAdapter::onBindViewHolder")
             }
@@ -89,4 +106,7 @@ class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
 
     inner class EpicBookmarkHolder(binding: FragmentBookmarksItemEpicBinding) :
         GenericHolder<FragmentBookmarksItemEpicBinding>(binding)
+
+    inner class MarsBookmarkHolder(binding: FragmentBookmarksItemMarsBinding) :
+        GenericHolder<FragmentBookmarksItemMarsBinding>(binding)
 }

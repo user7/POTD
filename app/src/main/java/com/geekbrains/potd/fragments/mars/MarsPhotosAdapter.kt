@@ -1,5 +1,6 @@
 package com.geekbrains.potd.fragments.mars
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,15 +10,17 @@ import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.PhotoRecyclerItemBinding
 import com.geekbrains.potd.nasa.MarsPhotosDTO
 
-class MarsPhotosAdapter : RecyclerView.Adapter<MarsPhotosAdapter.ViewHolder>() {
-    private var data: MarsPhotosDTO? = null
-    fun setData(photos: MarsPhotosDTO?) {
-        data = photos
+class MarsPhotosAdapter(private val context: Context) :
+    RecyclerView.Adapter<MarsPhotosAdapter.ViewHolder>() {
+
+    private var data = MarsPhotosDTO(ArrayList())
+    fun setData(data: MarsPhotosDTO) {
+        this.data = data
         notifyDataSetChanged()
     }
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding = PhotoRecyclerItemBinding.bind(itemView)
+    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val binding = PhotoRecyclerItemBinding.bind(view)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -27,12 +30,13 @@ class MarsPhotosAdapter : RecyclerView.Adapter<MarsPhotosAdapter.ViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val photos = data!!.photos // data can't be null in binding
-        val p = photos[position]
-        holder.binding.labelAbove.text = "${position + 1}/${photos.size}\n${p.date}"
-        holder.binding.labelBelow.text = p.camera?.fullName ?: ""
-        holder.binding.imageView.load(p.url)
+        val photos = data.photos
+        val photo = photos[position]
+        holder.binding.labelAbove.text = context.getString(R.string.photo_counter_and_date_label)
+            .format(position + 1, photos.size, photo.date)
+        holder.binding.labelBelow.text = photo.camera?.fullName ?: ""
+        holder.binding.imageView.load(photo.url)
     }
 
-    override fun getItemCount(): Int = data?.photos?.size ?: 0
+    override fun getItemCount() = data.photos.size
 }

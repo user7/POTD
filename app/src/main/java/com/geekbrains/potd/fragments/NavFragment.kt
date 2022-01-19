@@ -64,6 +64,7 @@ class NavFragment : Fragment() {
         when (bookmark) {
             is Bookmark.Potd -> R.id.bottomViewSystem
             is Bookmark.Epic -> R.id.bottomViewEarth
+            is Bookmark.Mars -> R.id.bottomViewMars
         }.let { itemId ->
             navFragments[itemId]?.let { fragmentFactory ->
                 binding.bottomNavigationView.selectedItemId = itemId

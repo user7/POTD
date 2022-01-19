@@ -11,4 +11,6 @@
     <dimen name="bookmark_type_icon_size">24dp</dimen>
     <dimen name="bookmark_button_margin">15dp</dimen>
     <dimen name="bookmarks_recycler_item_margins">5dp</dimen>
+    <dimen name="indicator_margin">7dp</dimen>
+    <dimen name="indicator_padding">20dp</dimen>
 </resources>

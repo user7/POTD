@@ -20,9 +20,9 @@
     <string name="label_chip_previous">Previous</string>
     <string name="label_chip_today">Today</string>
     <string name="label_chip_hd">HD</string>
-    <string name="label_description_loading">Loading ...</string>
+    <string name="label_description_loading">Loading…</string>
     <string name="label_image_desc">Picture of the day</string>
-    <string name="toolabar_app_title">NASA</string>
+    <string name="toolbar_app_title">NASA</string>
     <string name="appbar_scrolling_behavior">com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior</string>
     <string name="collapsing_toolbar_title">Collapsing Toolbar</string>
     <string name="button">Button</string>
@@ -66,5 +66,14 @@
     <string name="button_label_red">RED</string>
     <string name="button_label_orange">ORANGE</string>
     <string name="button_label_green">GREEN</string>
-
+    <string name="no_photos_for_date">"No photos for %s"</string>
+    <string name="photo_counter_and_date_label">"%1$s/%2$s\n%3$s"</string>
+    <string name="picture_of_the_day_icon">picture of the day icon</string>
+    <string name="mars_icon">mars icon</string>
+    <string name="earth_icon">earth icon</string>
+    <string name="email_button">email button</string>
+    <string name="unused_button">unused button</string>
+    <string name="off_indicator">off indicator</string>
+    <string name="on_indicator">on indicator</string>
+    <string name="photo">photo</string>
 </resources>

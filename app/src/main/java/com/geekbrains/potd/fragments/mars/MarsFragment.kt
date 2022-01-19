@@ -23,7 +23,7 @@ class MarsFragment : BookmarkableFragmentBase() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentMarsBinding.inflate(inflater, container, false)
         return binding.root
     }

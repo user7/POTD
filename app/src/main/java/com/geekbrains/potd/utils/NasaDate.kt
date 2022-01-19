@@ -1,8 +1,8 @@
 package com.geekbrains.potd.utils
 
-import android.util.Log
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 class NasaDate {
     private var dayShift = 0
@@ -42,6 +42,7 @@ class NasaDate {
         val cal = Calendar.getInstance(Locale.getDefault())
         cal.time = dateFormat.parse(date)!!
 
-        dayShift = Math.round((cal.timeInMillis - curCal.timeInMillis + 0f) / (24 * 60 * 60 * 1000))
+        dayShift =
+            ((cal.timeInMillis - curCal.timeInMillis + 0f) / (24 * 60 * 60 * 1000)).roundToInt()
     }
 }

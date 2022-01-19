@@ -20,7 +20,7 @@ class BookmarksFragment(navigate: (Bookmark) -> Unit) : BookmarkableFragmentBase
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentBookmarksBinding.inflate(inflater, container, false)
         adapter.data = mainViewModel.bookmarks
         binding.bookmarksRecyclerView.adapter = adapter

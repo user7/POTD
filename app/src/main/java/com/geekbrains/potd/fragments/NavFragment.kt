@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentNavBinding
 import com.geekbrains.potd.fragments.bookmarks.Bookmark
@@ -22,7 +21,7 @@ class NavFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentNavBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -64,7 +63,6 @@ class NavFragment : Fragment() {
     private fun navigateByBookmark(bookmark: Bookmark) {
         when (bookmark) {
             is Bookmark.Potd -> navFragments[R.id.bottomViewSystem]
-            else -> null
         }?.let { fragmentFactory ->
             val frag = fragmentFactory()
             frag.startingBookmark = bookmark

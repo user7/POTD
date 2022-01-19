@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
-        android:paddingBottom="20dp"
+        android:padding="@dimen/indicator_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -75,28 +75,22 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
+            android:layout_marginHorizontal="@dimen/indicator_margin"
+            android:contentDescription="@string/off_indicator"
             android:src="@drawable/ic_indicator_off" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
+            android:layout_marginHorizontal="@dimen/indicator_margin"
+            android:contentDescription="@string/on_indicator"
             android:src="@drawable/ic_indicator_on" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginLeft="7dp"
-            android:layout_marginEnd="7dp"
-            android:layout_marginRight="7dp"
+            android:layout_marginHorizontal="@dimen/indicator_margin"
+            android:contentDescription="@string/off_indicator"
             android:src="@drawable/ic_indicator_off" />
     </LinearLayout>
 

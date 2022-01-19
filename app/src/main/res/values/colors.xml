@@ -67,8 +67,6 @@
     <color name="md_bluegray_dark_inverseOnSurface">#191C1E</color>
     <color name="md_bluegray_dark_inverseSurface">#E1E2E4</color>
     <color name="md_bluegray_dark_primaryInverse">#006684</color>
-    <color name="md_bluegray_seed">#538AA2</color>
-    <color name="md_bluegrey_error">#BA1B1B</color>
 
 
     <color name="md_orangegreen_light_primary">#7F5700</color>
@@ -123,6 +121,5 @@
     <color name="md_orangegreen_dark_inverseOnSurface">#1F1B16</color>
     <color name="md_orangegreen_dark_inverseSurface">#EAE1D8</color>
     <color name="md_orangegreen_dark_primaryInverse">#7F5700</color>
-    <color name="md_orangegreen_seed">#D9BC91</color>
 
 </resources>

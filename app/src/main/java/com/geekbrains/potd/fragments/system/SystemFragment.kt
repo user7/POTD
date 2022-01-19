@@ -22,7 +22,7 @@ import com.geekbrains.potd.fragments.bookmarks.Bookmark
 
 class SystemFragment : BookmarkableFragmentBase() {
     private var _binding: FragmentSystemBinding? = null
-    val binding: FragmentSystemBinding get() = _binding!!
+    private val binding: FragmentSystemBinding get() = _binding!!
 
     private val fragmentViewModel: SystemViewModel by viewModels()
     private val activityViewModel: MainViewModel by activityViewModels()
@@ -31,7 +31,7 @@ class SystemFragment : BookmarkableFragmentBase() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentSystemBinding.inflate(inflater, container, false)
         return binding.root
     }

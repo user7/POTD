@@ -9,6 +9,7 @@
         android:layout_width="@dimen/bookmark_type_icon_size"
         android:layout_height="@dimen/bookmark_type_icon_size"
         android:layout_margin="@dimen/bookmarks_recycler_item_margins"
+        android:contentDescription="@string/picture_of_the_day_icon"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bg_system" />

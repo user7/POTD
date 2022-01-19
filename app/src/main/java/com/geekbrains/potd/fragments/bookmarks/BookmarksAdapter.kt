@@ -13,11 +13,11 @@ import java.lang.IllegalArgumentException
 class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
     RecyclerView.Adapter<BookmarksAdapter.BookmarkHolder>() {
 
-    var data = Bookmarks()
-        set(data_) {
-            field = data_
-            notifyDataSetChanged()
-        }
+    private var data = Bookmarks()
+    fun setData(data_ : Bookmarks) {
+        data = data_
+        notifyDataSetChanged()
+    }
 
     open class BookmarkHolder(view: View) : RecyclerView.ViewHolder(view)
     enum class BookmarkType {

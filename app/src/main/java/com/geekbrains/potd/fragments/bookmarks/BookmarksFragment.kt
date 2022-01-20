@@ -8,13 +8,14 @@ import androidx.fragment.app.activityViewModels
 import com.geekbrains.potd.MainViewModel
 import com.geekbrains.potd.databinding.FragmentBookmarksBinding
 import com.geekbrains.potd.fragments.BookmarkableFragmentBase
+import com.geekbrains.potd.fragments.Navigator
 
-class BookmarksFragment(navigate: (Bookmark) -> Unit) : BookmarkableFragmentBase() {
+class BookmarksFragment(private val navigator: Navigator) : BookmarkableFragmentBase() {
     private val mainViewModel: MainViewModel by activityViewModels()
 
     private var _binding: FragmentBookmarksBinding? = null
     private val binding: FragmentBookmarksBinding get() = _binding!!
-    private val adapter = BookmarksAdapter(navigate)
+    private lateinit var adapter: BookmarksAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -22,7 +23,7 @@ class BookmarksFragment(navigate: (Bookmark) -> Unit) : BookmarkableFragmentBase
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBookmarksBinding.inflate(inflater, container, false)
-        adapter.setData(mainViewModel.bookmarks)
+        adapter = BookmarksAdapter(navigator, mainViewModel.bookmarks)
         binding.bookmarksRecyclerView.adapter = adapter
         return binding.root
     }

@@ -35,7 +35,7 @@ class NavFragment : Fragment() {
         Pair(R.id.bottomViewSystem) { SystemFragment() },
         Pair(R.id.bottomViewEarth) { EarthFragment() },
         Pair(R.id.bottomViewMars) { MarsFragment() },
-        Pair(R.id.bottomViewBookmarks) { BookmarksFragment(this::navigateByBookmark) },
+        Pair(R.id.bottomViewBookmarks) { BookmarksFragment() },
     )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -73,5 +73,13 @@ class NavFragment : Fragment() {
                 navigateTo(frag)
             }
         }
+    }
+
+    private fun makeBookmarksFragment(): BookmarksFragment {
+        return BookmarksFragment(object : Navigator {
+            override fun navigate(bookmark: Bookmark) {
+                this@NavFragment.navigateByBookmark(bookmark)
+            }
+        })
     }
 }

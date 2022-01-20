@@ -9,17 +9,11 @@ import com.geekbrains.potd.databinding.FragmentBookmarksItemEpicBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemMarsBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemPotdBinding
 import com.geekbrains.potd.fragments.IdentityDiffUtil
+import com.geekbrains.potd.fragments.Navigator
 import java.lang.IllegalArgumentException
 
-class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
+class BookmarksAdapter(private val navigator: Navigator, private val data: Bookmarks) :
     RecyclerView.Adapter<BookmarksAdapter.BookmarkHolder>() {
-
-    private var data = Bookmarks()
-    fun setData(data : Bookmarks) {
-        val oldData = this.data
-        this.data = data
-        IdentityDiffUtil.notifyDataChanged(oldData, data, this)
-    }
 
     open class BookmarkHolder(view: View) : RecyclerView.ViewHolder(view)
     enum class BookmarkType {
@@ -36,7 +30,7 @@ class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
                     parent,
                     false
                 )
-                return PotdBookmarkHolder(binding)
+                return PotdBookmarkHolder(binding, this)
             }
             BookmarkType.EPIC.ordinal -> {
                 val binding = FragmentBookmarksItemEpicBinding.inflate(
@@ -99,16 +93,28 @@ class BookmarksAdapter(private val navigate: (Bookmark) -> Unit) :
         var bookmark: Bookmark? = null
 
         init {
-            binding.root.setOnClickListener { bookmark?.let { navigate(it) } }
+            binding.root.setOnClickListener { bookmark?.let { navigator.navigate(it) } }
         }
     }
 
-    inner class PotdBookmarkHolder(binding: FragmentBookmarksItemPotdBinding) :
-        GenericHolder<FragmentBookmarksItemPotdBinding>(binding)
+    inner class PotdBookmarkHolder(
+        binding: FragmentBookmarksItemPotdBinding,
+        adapter: BookmarksAdapter
+    ) :
+        GenericHolder<FragmentBookmarksItemPotdBinding>(binding) {
+        init {
+            binding.deleteBookmarkButton.setOnClickListener { adapter.deleteItem(adapterPosition) }
+        }
+    }
 
     inner class EpicBookmarkHolder(binding: FragmentBookmarksItemEpicBinding) :
         GenericHolder<FragmentBookmarksItemEpicBinding>(binding)
 
     inner class MarsBookmarkHolder(binding: FragmentBookmarksItemMarsBinding) :
         GenericHolder<FragmentBookmarksItemMarsBinding>(binding)
+
+    fun deleteItem(position: Int) {
+        data.removeAt(position)
+        notifyItemRemoved(position)
+    }
 }

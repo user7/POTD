@@ -76,4 +76,5 @@
     <string name="off_indicator">off indicator</string>
     <string name="on_indicator">on indicator</string>
     <string name="photo">photo</string>
+    <string name="bookmark_description">Bookmark description</string>
 </resources>

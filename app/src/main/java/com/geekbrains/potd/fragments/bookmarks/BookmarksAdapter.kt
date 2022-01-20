@@ -38,7 +38,7 @@ class BookmarksAdapter(private val navigator: Navigator, private val data: Bookm
                     parent,
                     false
                 )
-                return EpicBookmarkHolder(binding)
+                return EpicBookmarkHolder(binding, this)
             }
             BookmarkType.MARS.ordinal -> {
                 val binding = FragmentBookmarksItemMarsBinding.inflate(
@@ -46,7 +46,7 @@ class BookmarksAdapter(private val navigator: Navigator, private val data: Bookm
                     parent,
                     false
                 )
-                return MarsBookmarkHolder(binding)
+                return MarsBookmarkHolder(binding, this)
             }
             else -> throw IllegalArgumentException("Unsupported viewType $viewType")
         }
@@ -107,11 +107,25 @@ class BookmarksAdapter(private val navigator: Navigator, private val data: Bookm
         }
     }
 
-    inner class EpicBookmarkHolder(binding: FragmentBookmarksItemEpicBinding) :
-        GenericHolder<FragmentBookmarksItemEpicBinding>(binding)
+    inner class EpicBookmarkHolder(
+        binding: FragmentBookmarksItemEpicBinding,
+        adapter: BookmarksAdapter
+    ) :
+        GenericHolder<FragmentBookmarksItemEpicBinding>(binding) {
+        init {
+            binding.deleteBookmarkButton.setOnClickListener { adapter.deleteItem(adapterPosition) }
+        }
+    }
 
-    inner class MarsBookmarkHolder(binding: FragmentBookmarksItemMarsBinding) :
-        GenericHolder<FragmentBookmarksItemMarsBinding>(binding)
+    inner class MarsBookmarkHolder(
+        binding: FragmentBookmarksItemMarsBinding,
+        adapter: BookmarksAdapter
+    ) :
+        GenericHolder<FragmentBookmarksItemMarsBinding>(binding) {
+        init {
+            binding.deleteBookmarkButton.setOnClickListener { adapter.deleteItem(adapterPosition) }
+        }
+    }
 
     fun deleteItem(position: Int) {
         data.removeAt(position)

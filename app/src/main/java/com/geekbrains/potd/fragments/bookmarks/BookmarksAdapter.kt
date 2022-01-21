@@ -1,17 +1,23 @@
 package com.geekbrains.potd.fragments.bookmarks
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
+import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentBookmarksItemEpicBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemMarsBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemPotdBinding
 import com.geekbrains.potd.fragments.Navigator
 import java.lang.IllegalArgumentException
 
-class BookmarksAdapter(private val navigator: Navigator, val data: Bookmarks) :
+class BookmarksAdapter(
+    private val navigator: Navigator,
+    val data: Bookmarks,
+    private val context: Context
+) :
     RecyclerView.Adapter<BookmarksAdapter.BookmarkHolder>() {
 
     open class BookmarkHolder(view: View) : RecyclerView.ViewHolder(view)
@@ -71,6 +77,9 @@ class BookmarksAdapter(private val navigator: Navigator, val data: Bookmarks) :
                 val bookmark = data[position] as Bookmark.Epic
                 holder.binding.bookmarkDate.text = bookmark.apiDate
                 holder.binding.bookmarkText.text = bookmark.data.getOrNull(0)?.caption
+                holder.binding.bookmarkPhotoIndex.text =
+                    context.getString(R.string.photo_counter)
+                        .format(bookmark.curPosition + 1, bookmark.data.size)
                 holder.bookmark = bookmark
             }
             is MarsBookmarkHolder -> {
@@ -78,6 +87,9 @@ class BookmarksAdapter(private val navigator: Navigator, val data: Bookmarks) :
                 holder.binding.bookmarkDate.text = bookmark.apiDate
                 val camera = bookmark.data.photos.getOrNull(0)?.camera
                 holder.binding.bookmarkText.text = camera?.shortName ?: ""
+                holder.binding.bookmarkPhotoIndex.text =
+                    context.getString(R.string.photo_counter)
+                        .format(bookmark.curPosition + 1, bookmark.data.photos.size)
                 holder.bookmark = bookmark
             }
             else -> {

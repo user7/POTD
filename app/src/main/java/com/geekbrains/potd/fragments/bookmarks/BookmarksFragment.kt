@@ -27,7 +27,7 @@ class BookmarksFragment(private val navigator: Navigator) : BookmarkableFragment
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBookmarksBinding.inflate(inflater, container, false)
-        adapter = BookmarksAdapter(navigator, mainViewModel.bookmarks)
+        adapter = BookmarksAdapter(navigator, mainViewModel.bookmarks, requireContext())
         binding.bookmarksRecyclerView.adapter = adapter
         itemTouchHelper.attachToRecyclerView(binding.bookmarksRecyclerView)
         return binding.root

@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.potd.MainViewModel
 import com.geekbrains.potd.databinding.FragmentBookmarksBinding
-import com.geekbrains.potd.fragments.BookmarkableFragmentBase
+import com.geekbrains.potd.fragments.utils.BookmarkableFragmentBase
 import com.geekbrains.potd.fragments.Navigator
 
 class BookmarksFragment(private val navigator: Navigator) : BookmarkableFragmentBase() {

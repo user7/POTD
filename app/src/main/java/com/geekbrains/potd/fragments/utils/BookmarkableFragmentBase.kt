@@ -1,4 +1,4 @@
-package com.geekbrains.potd.fragments
+package com.geekbrains.potd.fragments.utils
 
 import androidx.fragment.app.Fragment
 import com.geekbrains.potd.fragments.bookmarks.Bookmark

@@ -1,4 +1,4 @@
-package com.geekbrains.potd.fragments
+package com.geekbrains.potd.fragments.utils
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView

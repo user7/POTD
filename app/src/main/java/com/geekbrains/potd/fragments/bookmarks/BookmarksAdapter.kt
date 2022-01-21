@@ -3,13 +3,11 @@ package com.geekbrains.potd.fragments.bookmarks
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemEpicBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemMarsBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemPotdBinding
-import com.geekbrains.potd.fragments.IdentityDiffUtil
 import com.geekbrains.potd.fragments.Navigator
 import java.lang.IllegalArgumentException
 

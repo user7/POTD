@@ -8,7 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.PhotoRecyclerItemBinding
-import com.geekbrains.potd.fragments.IdentityDiffUtil
+import com.geekbrains.potd.fragments.utils.IdentityDiffUtil
 import com.geekbrains.potd.nasa.EpicPhotosDTO
 
 class EarthPhotosAdapter(private val context: Context) :

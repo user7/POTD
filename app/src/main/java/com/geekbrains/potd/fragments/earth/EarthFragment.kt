@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.potd.MainViewModel
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentEarthBinding
-import com.geekbrains.potd.fragments.BookmarkableFragmentBase
+import com.geekbrains.potd.fragments.utils.BookmarkableFragmentBase
 import com.geekbrains.potd.fragments.bookmarks.Bookmark
 
 class EarthFragment : BookmarkableFragmentBase() {

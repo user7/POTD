@@ -17,7 +17,7 @@ import coil.load
 import com.geekbrains.potd.MainViewModel
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentSystemBinding
-import com.geekbrains.potd.fragments.BookmarkableFragmentBase
+import com.geekbrains.potd.fragments.utils.BookmarkableFragmentBase
 import com.geekbrains.potd.fragments.bookmarks.Bookmark
 
 class SystemFragment : BookmarkableFragmentBase() {

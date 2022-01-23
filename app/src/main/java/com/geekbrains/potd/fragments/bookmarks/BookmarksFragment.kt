@@ -1,7 +1,6 @@
 package com.geekbrains.potd.fragments.bookmarks
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,9 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.geekbrains.potd.MainViewModel
 import com.geekbrains.potd.databinding.FragmentBookmarksBinding
 import com.geekbrains.potd.fragments.utils.BookmarkableFragmentBase
-import com.geekbrains.potd.fragments.Navigator
 
-class BookmarksFragment(private val navigator: Navigator) : BookmarkableFragmentBase() {
+class BookmarksFragment() : BookmarkableFragmentBase() {
     private val mainViewModel: MainViewModel by activityViewModels()
 
     private var _binding: FragmentBookmarksBinding? = null
@@ -27,7 +25,7 @@ class BookmarksFragment(private val navigator: Navigator) : BookmarkableFragment
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentBookmarksBinding.inflate(inflater, container, false)
-        adapter = BookmarksAdapter(navigator, mainViewModel.bookmarks, requireContext())
+        adapter = BookmarksAdapter(this, mainViewModel.getBookmarks(), requireContext())
         binding.bookmarksRecyclerView.adapter = adapter
         itemTouchHelper.attachToRecyclerView(binding.bookmarksRecyclerView)
         return binding.root
@@ -46,10 +44,7 @@ class BookmarksFragment(private val navigator: Navigator) : BookmarkableFragment
             dragged: RecyclerView.ViewHolder,
             target: RecyclerView.ViewHolder
         ): Boolean {
-            val posFrom = dragged.adapterPosition
-            val posTo = target.adapterPosition
-            adapter.data.removeAt(posFrom).apply { adapter.data.add(posTo, this) }
-            adapter.notifyItemMoved(posFrom, posTo)
+            adapter.swapItems(dragged.adapterPosition, target.adapterPosition)
             return true
         }
 

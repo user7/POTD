@@ -10,16 +10,16 @@ import androidx.transition.Fade
 import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import androidx.viewbinding.ViewBinding
+import com.geekbrains.potd.App
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentBookmarksItemEpicBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemMarsBinding
 import com.geekbrains.potd.databinding.FragmentBookmarksItemPotdBinding
-import com.geekbrains.potd.fragments.Navigator
 import java.lang.IllegalArgumentException
 
 class BookmarksAdapter(
-    private val navigator: Navigator,
-    val data: Bookmarks,
+    private val parentFragment: BookmarksFragment,
+    private val data: Bookmarks,
     private val context: Context
 ) :
     RecyclerView.Adapter<BookmarksAdapter.BookmarkHolder>() {
@@ -110,7 +110,7 @@ class BookmarksAdapter(
         var expanded: Boolean = false
 
         init {
-            binding.root.setOnClickListener { bookmark?.let { navigator.navigate(it) } }
+            binding.root.setOnClickListener { bookmark?.let { App.instance.navigator?.navigate(it) } }
         }
     }
 
@@ -165,5 +165,10 @@ class BookmarksAdapter(
     fun deleteItem(position: Int) {
         data.removeAt(position)
         notifyItemRemoved(position)
+    }
+
+    fun swapItems(posFrom: Int, posTo: Int) {
+        data.removeAt(posFrom).apply { data.add(posTo, this) }
+        notifyItemMoved(posFrom, posTo)
     }
 }

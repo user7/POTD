@@ -5,7 +5,9 @@ import com.geekbrains.potd.nasa.MarsPhotosDTO
 import com.geekbrains.potd.nasa.PotdDTO
 import kotlin.collections.ArrayList
 
-sealed class Bookmark {
+sealed class Bookmark : Cloneable {
+    public override fun clone(): Any = super.clone()
+    
     data class Potd(val data: PotdDTO, val apiDate: String) : Bookmark()
     data class Epic(val data: EpicPhotosDTO, val apiDate: String, val curPosition: Int) : Bookmark()
     data class Mars(val data: MarsPhotosDTO, val apiDate: String, val curPosition: Int) : Bookmark()

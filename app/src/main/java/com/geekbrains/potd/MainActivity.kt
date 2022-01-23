@@ -12,19 +12,28 @@ import com.geekbrains.potd.databinding.ActivityMainBinding
 import com.geekbrains.potd.demo.AnimationFragment
 import com.geekbrains.potd.demo.CollapsingToolbarFragment
 import com.geekbrains.potd.demo.MotionFragment
+import com.geekbrains.potd.repository.BookmarksRepository
 
 class MainActivity : AppCompatActivity() {
-    private val mainViewModel: MainViewModel by viewModels()
-
     private lateinit var binding: ActivityMainBinding
+
+    private val mainViewModel: MainViewModel by viewModels()
+    private val bookmarksRepository: BookmarksRepository by lazy {
+        BookmarksRepository(mainViewModel)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+
         mainViewModel.themeId?.let { setTheme(it) }
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.topToolbar.setOnMenuItemClickListener { onOptionsItemSelected(it) }
+
+        bookmarksRepository.load()
+        mainViewModel.bookmarks.observe(this, { bookmarksRepository.save() })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

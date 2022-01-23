@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.geekbrains.potd.App
+import com.geekbrains.potd.Navigator
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentNavBinding
 import com.geekbrains.potd.fragments.bookmarks.Bookmark
@@ -16,6 +18,15 @@ import com.geekbrains.potd.fragments.system.SystemFragment
 class NavFragment : Fragment() {
     private var _binding: FragmentNavBinding? = null
     private val binding: FragmentNavBinding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        App.instance.navigator = object : Navigator {
+            override fun navigate(bookmark: Bookmark) {
+                this@NavFragment.navigateByBookmark(bookmark)
+            }
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,13 +84,5 @@ class NavFragment : Fragment() {
                 navigateTo(frag)
             }
         }
-    }
-
-    private fun makeBookmarksFragment(): BookmarksFragment {
-        return BookmarksFragment(object : Navigator {
-            override fun navigate(bookmark: Bookmark) {
-                this@NavFragment.navigateByBookmark(bookmark)
-            }
-        })
     }
 }

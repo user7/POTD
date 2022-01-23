@@ -1,22 +1,33 @@
 package com.geekbrains.potd
 
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.geekbrains.potd.fragments.bookmarks.Bookmark
 import com.geekbrains.potd.fragments.bookmarks.Bookmarks
 
 class MainViewModel : ViewModel() {
     var themeId: Int? = null
-    var bookmarks = Bookmarks()
+
+    private val mutableBookmarks = MutableLiveData(Bookmarks())
+    val bookmarks: LiveData<Bookmarks> = mutableBookmarks
+
+    fun setBookmarks(bookmarksData: Bookmarks) = mutableBookmarks.postValue(bookmarksData)
+    fun getBookmarks() = bookmarks.value ?: Bookmarks()
 
     fun editBookmark(b: Bookmark, add: Boolean) {
-        if (add) {
-            if (!bookmarks.contains(b)) {
-                bookmarks.add(b)
+        val cont = bookmarks.value
+        if (cont != null) {
+            if (add) {
+                if (!cont.contains(b))
+                    setBookmarks(Bookmarks(cont).apply { add(b) })
+            } else {
+                if (cont.contains(b))
+                    setBookmarks(Bookmarks(cont.filter { it !== b }))
             }
-        } else {
-            bookmarks.remove(b)
         }
     }
 
-    fun isBookmarkPresent(b: Bookmark) = bookmarks.contains(b)
+    fun isBookmarkPresent(b: Bookmark): Boolean = bookmarks.value?.contains(b) ?: false
+
 }

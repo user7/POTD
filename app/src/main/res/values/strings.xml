@@ -78,4 +78,5 @@
     <string name="on_indicator">on indicator</string>
     <string name="photo">photo</string>
     <string name="bookmark_description">Bookmark description</string>
+    <string name="delete_bookmark">Delete bookmark</string>
 </resources>

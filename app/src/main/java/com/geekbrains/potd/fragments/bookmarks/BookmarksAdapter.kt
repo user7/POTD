@@ -5,6 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.ChangeBounds
+import androidx.transition.Fade
+import androidx.transition.TransitionManager
+import androidx.transition.TransitionSet
 import androidx.viewbinding.ViewBinding
 import com.geekbrains.potd.R
 import com.geekbrains.potd.databinding.FragmentBookmarksItemEpicBinding
@@ -69,14 +73,15 @@ class BookmarksAdapter(
         when (holder) {
             is PotdBookmarkHolder -> {
                 val bookmark = data[position] as Bookmark.Potd
-                holder.binding.bookmarkDate.text = bookmark.apiDate
-                holder.binding.bookmarkText.text = bookmark.data.title
                 holder.bookmark = bookmark
+                holder.binding.bookmarkDate.text = bookmark.apiDate
+                holder.binding.bookmarkTitle.text = bookmark.data.title
+                holder.binding.bookmarkDescription.text = bookmark.data.explanation
             }
             is EpicBookmarkHolder -> {
                 val bookmark = data[position] as Bookmark.Epic
                 holder.binding.bookmarkDate.text = bookmark.apiDate
-                holder.binding.bookmarkText.text = bookmark.data.getOrNull(0)?.caption
+                holder.binding.bookmarkTitle.text = bookmark.data.getOrNull(0)?.caption
                 holder.binding.bookmarkPhotoIndex.text =
                     context.getString(R.string.photo_counter)
                         .format(bookmark.curPosition + 1, bookmark.data.size)
@@ -86,7 +91,7 @@ class BookmarksAdapter(
                 val bookmark = data[position] as Bookmark.Mars
                 holder.binding.bookmarkDate.text = bookmark.apiDate
                 val camera = bookmark.data.photos.getOrNull(0)?.camera
-                holder.binding.bookmarkText.text = camera?.shortName ?: ""
+                holder.binding.bookmarkTitle.text = camera?.shortName ?: ""
                 holder.binding.bookmarkPhotoIndex.text =
                     context.getString(R.string.photo_counter)
                         .format(bookmark.curPosition + 1, bookmark.data.photos.size)
@@ -102,6 +107,7 @@ class BookmarksAdapter(
 
     open inner class GenericHolder<B : ViewBinding>(val binding: B) : BookmarkHolder(binding.root) {
         var bookmark: Bookmark? = null
+        var expanded: Boolean = false
 
         init {
             binding.root.setOnClickListener { bookmark?.let { navigator.navigate(it) } }
@@ -115,6 +121,24 @@ class BookmarksAdapter(
         GenericHolder<FragmentBookmarksItemPotdBinding>(binding) {
         init {
             binding.deleteBookmarkButton.setOnClickListener { adapter.deleteItem(adapterPosition) }
+            binding.moreInfoButton.setOnClickListener {
+                expanded = !expanded
+                if (expanded) {
+                    TransitionManager.beginDelayedTransition(
+                        binding.root,
+                        TransitionSet().addTransition(ChangeBounds()).addTransition(Fade())
+                    )
+                    binding.bookmarkDescription.visibility = View.VISIBLE
+                    binding.moreInfoButton.setImageResource(R.drawable.ic_arrow_drop_up_24)
+                } else {
+                    TransitionManager.beginDelayedTransition(
+                        binding.root,
+                        TransitionSet().addTransition(ChangeBounds())
+                    )
+                    binding.bookmarkDescription.visibility = View.GONE
+                    binding.moreInfoButton.setImageResource(R.drawable.ic_arrow_drop_down_24)
+                }
+            }
         }
     }
 

@@ -40,7 +40,7 @@
         tools:text="5/12" />
 
     <TextView
-        android:id="@+id/bookmarkText"
+        android:id="@+id/bookmarkTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/bookmarks_recycler_item_margins"

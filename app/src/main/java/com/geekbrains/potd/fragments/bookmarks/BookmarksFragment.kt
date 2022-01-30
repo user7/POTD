@@ -50,4 +50,5 @@ class BookmarksFragment() : BookmarkableFragmentBase() {
 
         override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {} // unused
     }
+
 }

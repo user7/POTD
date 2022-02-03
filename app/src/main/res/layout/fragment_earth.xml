@@ -40,10 +40,10 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:orientation="horizontal"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/description"
+        app:layout_constraintBottom_toTopOf="@+id/indicatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/chipGroup"
@@ -53,12 +53,11 @@
         android:id="@+id/description"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:padding="10dp"
         android:text="@string/label_description_loading"
         app:layout_constraintBottom_toTopOf="@id/indicatorLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recyclerView"
+        app:layout_constraintTop_toBottomOf="@id/chipGroup"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <LinearLayout
@@ -93,5 +92,18 @@
             android:contentDescription="@string/off_indicator"
             android:src="@drawable/ic_indicator_off" />
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/bookmarkCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/bookmark_button_margin"
+        android:layout_marginBottom="@dimen/bookmark_button_margin"
+        android:button="@drawable/ic_add_bookmark"
+        android:gravity="bottom|end"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

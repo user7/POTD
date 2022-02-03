@@ -62,11 +62,15 @@ class NavFragment : Fragment() {
 
     private fun navigateByBookmark(bookmark: Bookmark) {
         when (bookmark) {
-            is Bookmark.Potd -> navFragments[R.id.bottomViewSystem]
-        }?.let { fragmentFactory ->
-            val frag = fragmentFactory()
-            frag.startingBookmark = bookmark
-            navigateTo(frag)
+            is Bookmark.Potd -> R.id.bottomViewSystem
+            is Bookmark.Epic -> R.id.bottomViewEarth
+        }.let { itemId ->
+            navFragments[itemId]?.let { fragmentFactory ->
+                binding.bottomNavigationView.selectedItemId = itemId
+                val frag = fragmentFactory()
+                frag.startingBookmark = bookmark
+                navigateTo(frag)
+            }
         }
     }
 }

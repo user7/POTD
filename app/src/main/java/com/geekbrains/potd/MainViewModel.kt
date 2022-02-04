@@ -7,7 +7,7 @@ import com.geekbrains.potd.fragments.bookmarks.Bookmark
 import com.geekbrains.potd.fragments.bookmarks.Bookmarks
 
 class MainViewModel : ViewModel() {
-    var themeId: Int? = null
+    var themeId: Int = R.style.Theme_Default
 
     private val mutableBookmarks = MutableLiveData(Bookmarks())
     val bookmarks: LiveData<Bookmarks> = mutableBookmarks

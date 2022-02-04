@@ -25,8 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-
-        mainViewModel.themeId?.let { setTheme(it) }
+        setTheme(mainViewModel.themeId)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)

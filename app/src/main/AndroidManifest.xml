@@ -12,9 +12,13 @@
         android:roundIcon="@mipmap/ic_logo3_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Default">
+
         <activity
             android:name=".MainActivity"
-            android:theme="@style/Theme.Default.Splash"
+            android:exported="true" />
+
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

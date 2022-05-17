@@ -7,23 +7,23 @@
 
     <TextView
         android:id="@+id/labelAbove"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         tools:text="1/10\n2021-01-01 11:22:33" />
 
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:contentDescription="@string/photo"
         tools:src="@drawable/bg_system" />
 
     <TextView
         android:id="@+id/labelBelow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:gravity="center_horizontal"
         tools:text="This is the description"/>
 

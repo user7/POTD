@@ -20,7 +20,7 @@ class AnimationFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAnimationBinding.inflate(inflater)
         return binding.root
     }

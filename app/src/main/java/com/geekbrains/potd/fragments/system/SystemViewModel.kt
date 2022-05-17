@@ -23,7 +23,7 @@ class SystemViewModel : ViewModel() {
 
     private val retrofitImpl: NasaRetrofitImpl = NasaRetrofitImpl()
 
-    private val nasaDate = NasaDate()
+    val nasaDate = NasaDate()
     fun adjustDayShift(value: Int) {
         if (nasaDate.adjust(value) || value == 0)
             sendServerRequest()

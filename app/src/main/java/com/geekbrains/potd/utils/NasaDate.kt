@@ -2,6 +2,7 @@ package com.geekbrains.potd.utils
 
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.math.roundToInt
 
 class NasaDate {
     private var dayShift = 0
@@ -23,11 +24,25 @@ class NasaDate {
         return false
     }
 
+    private val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US).apply {
+        timeZone = TimeZone.getTimeZone("EST")
+    }
+
     fun format(): String {
-        val cal = Calendar.getInstance()
+        val cal = Calendar.getInstance(Locale.getDefault())
         cal.add(Calendar.DAY_OF_MONTH, dayShift)
-        val fmt = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        fmt.timeZone = TimeZone.getTimeZone("EST")
-        return fmt.format(cal.time)
+        return dateFormat.format(cal.time)
+    }
+
+    fun setFromApiDate(date: String) {
+        dayShift = 0
+        val curCal = Calendar.getInstance(Locale.getDefault())
+        curCal.time = dateFormat.parse(format())!!
+
+        val cal = Calendar.getInstance(Locale.getDefault())
+        cal.time = dateFormat.parse(date)!!
+
+        dayShift =
+            ((cal.timeInMillis - curCal.timeInMillis + 0f) / (24 * 60 * 60 * 1000)).roundToInt()
     }
 }

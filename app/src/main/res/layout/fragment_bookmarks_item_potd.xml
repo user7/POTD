@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/bookmarks_recycler_item_margins">
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/bookmarkTypeIcon"
+            android:layout_width="@dimen/bookmark_type_icon_size"
+            android:layout_height="@dimen/bookmark_type_icon_size"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/bookmarks_recycler_item_margins"
+            android:contentDescription="@string/picture_of_the_day_icon"
+            app:srcCompat="@drawable/bg_system" />
+
+        <TextView
+            android:id="@+id/bookmarkDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/bookmarks_recycler_item_margins"
+            tools:text="23-01-2022" />
+
+        <TextView
+            android:id="@+id/bookmarkTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/bookmarks_recycler_item_margins"
+            android:layout_weight="1"
+            tools:text="Description text very long multiline text" />
+
+        <ImageView
+            android:id="@+id/moreInfoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/bookmarks_recycler_item_margins"
+            android:contentDescription="@string/bookmark_description"
+            app:srcCompat="@drawable/ic_arrow_drop_down_24" />
+
+        <ImageView
+            android:id="@+id/deleteBookmarkButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/bookmarks_recycler_item_margins"
+            android:contentDescription="@string/delete_bookmark"
+            app:srcCompat="@drawable/ic_baseline_clear_24" />
+
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <TextView
+        android:id="@+id/bookmarkTitleLower"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/bookmarks_recycler_item_margins"
+        android:layout_marginVertical="@dimen/bookmarks_recycler_item_margins"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainLayout"
+        tools:text="Title text is shorter."
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/bookmarkDescription"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/bookmarks_recycler_item_margins"
+        android:layout_marginVertical="@dimen/bookmarks_recycler_item_margins"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/bookmarkTitleLower"
+        tools:text="Description text very long multiline text. Description text very long multiline text. Description text very long multiline text. Description text."
+        tools:visibility="visible" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

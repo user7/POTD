@@ -15,7 +15,7 @@ class CollapsingToolbarFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentCollapsingToolbarBinding.inflate(inflater, container, false)
         return binding.root
     }

@@ -45,12 +45,11 @@
 
     </com.google.android.material.chip.ChipGroup>
 
-    <ImageView
+    <com.geekbrains.potd.widgets.StretchImageView
         android:id="@+id/imageView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/label_image_desc"
-        android:padding="20dp"
         app:layout_constraintBottom_toTopOf="@+id/description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -76,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:orientation="horizontal"
-        android:paddingBottom="20dp"
+        android:padding="@dimen/indicator_padding"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -84,23 +83,36 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
+            android:layout_marginHorizontal="@dimen/indicator_margin"
+            android:contentDescription="@string/on_indicator"
             android:src="@drawable/ic_indicator_on" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
+            android:layout_marginHorizontal="@dimen/indicator_margin"
+            android:contentDescription="@string/off_indicator"
             android:src="@drawable/ic_indicator_off" />
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="7dp"
-            android:layout_marginEnd="7dp"
+            android:layout_marginHorizontal="@dimen/indicator_margin"
+            android:contentDescription="@string/off_indicator"
             android:src="@drawable/ic_indicator_off" />
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/bookmarkCheckbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/bookmark_button_margin"
+        android:layout_marginBottom="@dimen/bookmark_button_margin"
+        android:button="@drawable/ic_add_bookmark"
+        android:gravity="bottom|end"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

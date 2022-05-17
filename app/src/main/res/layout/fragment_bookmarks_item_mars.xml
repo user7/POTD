@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/bookmarkTypeIcon"
+        android:layout_width="@dimen/bookmark_type_icon_size"
+        android:layout_height="@dimen/bookmark_type_icon_size"
+        android:layout_margin="@dimen/bookmarks_recycler_item_margins"
+        android:contentDescription="@string/mars_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/bg_mars" />
+
+    <TextView
+        android:id="@+id/bookmarkDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/bookmarks_recycler_item_margins"
+        android:layout_marginVertical="@dimen/bookmarks_recycler_item_margins"
+        app:layout_constraintStart_toEndOf="@id/bookmarkTypeIcon"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="10-01-2022" />
+
+    <TextView
+        android:id="@+id/bookmarkPhotoIndex"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/bookmarks_recycler_item_margins"
+        android:layout_marginBottom="@dimen/bookmarks_recycler_item_margins"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/bookmarkTypeIcon"
+        app:layout_constraintTop_toBottomOf="@id/bookmarkDate"
+        app:layout_constraintVertical_chainStyle="packed"
+        tools:text="5/12" />
+
+    <TextView
+        android:id="@+id/bookmarkTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/bookmarks_recycler_item_margins"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/deleteBookmarkButton"
+        app:layout_constraintStart_toEndOf="@id/bookmarkDate"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Description text description text multiline" />
+
+    <ImageView
+        android:id="@+id/deleteBookmarkButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/bookmark_description"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_clear_24" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

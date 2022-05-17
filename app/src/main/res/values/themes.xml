@@ -113,6 +113,10 @@
 
     <style name="Theme.Default" parent="Theme.Base.BlueGray" />
 
+    <style name="Theme.Default.Splash">
+        <item name="android:windowBackground">@drawable/splash_bg_layer</item>
+    </style>
+
     <style name="ColoredButton" parent="ShapeAppearanceOverlay.Material3.Button">
         <item name="android:textColor">@color/white</item>
     </style>

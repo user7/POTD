@@ -13,9 +13,9 @@ import retrofit2.Response
 
 class MarsViewModel : ViewModel() {
     sealed class RequestState {
-        data class Success(val response: MarsPhotosDTO) : RequestState()
-        data class Loading(val progress: Int?) : RequestState()
-        data class Error(val error: String) : RequestState()
+        class Success(val response: MarsPhotosDTO, var currentPosition: Int) : RequestState()
+        class Error(val error: String) : RequestState()
+        class Loading : RequestState()
     }
 
     private val stateLiveData: MutableLiveData<RequestState> = MutableLiveData()
@@ -37,13 +37,18 @@ class MarsViewModel : ViewModel() {
 
     fun sendServerRequest() {
         retrofitImpl.nasaApi.getMars(nasaDate.format(), BuildConfig.NASA_API_KEY).enqueue(callback)
+        stateLiveData.value = RequestState.Loading()
+    }
+
+    fun setState(state: RequestState) {
+        stateLiveData.postValue(state)
     }
 
     private val callback = object : Callback<MarsPhotosDTO> {
         override fun onResponse(call: Call<MarsPhotosDTO>, response: Response<MarsPhotosDTO>) {
-            val body = response.body() // temp to satisfy kotlin null checker
+            val body = response.body()
             if (response.isSuccessful && body != null) {
-                stateLiveData.value = RequestState.Success(body)
+                stateLiveData.value = RequestState.Success(body, 0)
             } else {
                 stateLiveData.value = RequestState.Error(response.message())
             }

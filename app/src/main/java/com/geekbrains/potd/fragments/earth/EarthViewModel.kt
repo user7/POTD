@@ -13,9 +13,9 @@ import retrofit2.Response
 
 class EarthViewModel : ViewModel() {
     sealed class RequestState {
-        data class Success(val response: EpicPhotosDTO) : RequestState()
-        data class Loading(val progress: Int?) : RequestState()
-        data class Error(val error: String) : RequestState()
+        class Success(val response: EpicPhotosDTO, var currentPosition: Int) : RequestState()
+        class Error(val error: String) : RequestState()
+        class Loading : RequestState()
     }
 
     private val stateLiveData: MutableLiveData<RequestState> = MutableLiveData()
@@ -37,13 +37,18 @@ class EarthViewModel : ViewModel() {
 
     fun sendServerRequest() {
         retrofitImpl.nasaApi.getEpic(nasaDate.format(), BuildConfig.NASA_API_KEY).enqueue(callback)
+        stateLiveData.value = RequestState.Loading()
+    }
+
+    fun setState(state: RequestState) {
+        stateLiveData.postValue(state)
     }
 
     private val callback = object : Callback<EpicPhotosDTO> {
         override fun onResponse(call: Call<EpicPhotosDTO>, response: Response<EpicPhotosDTO>) {
-            val body = response.body() // temp to satisfy kotlin null checker
+            val body = response.body()
             if (response.isSuccessful && body != null) {
-                stateLiveData.value = RequestState.Success(body)
+                stateLiveData.value = RequestState.Success(body, 0)
             } else {
                 stateLiveData.value = RequestState.Error(response.message())
             }
